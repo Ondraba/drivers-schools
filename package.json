@@ -10,16 +10,22 @@
   "author": "Jan Bejvl",
   "license": "ISC",
   "dependencies": {
+    "apollo-client": "^1.3.0",
     "axios": "^0.16.1",
     "connect-mongo": "^1.3.2",
     "express": "^4.15.3",
+    "express-graphql": "^0.6.6",
     "express-session": "^1.15.3",
+    "graphql": "^0.10.1",
+    "graphql-tag": "^2.2.1",
     "lodash": "^4.17.4",
     "mongodb": "^2.2.27",
     "mongoose": "^4.10.3",
     "next": "^2.4.0",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-apollo": "^1.2.0",
+    "react-dom": "^15.5.4",
+    "redux": "^3.6.0"
   }
 }
