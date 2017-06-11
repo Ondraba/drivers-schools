@@ -10,8 +10,9 @@ export default({ children, title = 'Page Title' }) => (
     </Head>
     <header>
       <nav>
-        <Link href='/'><a>Home</a></Link> |
-        <Link href='/contact'><a>Contact</a></Link>
+        <Link href='/' prefetch><a>Home</a></Link> |
+        <Link href='/contact' prefetch><a>Contact</a></Link> |
+        <Link href='/articles' prefetch><a>Articles</a></Link>
       </nav>
     </header>
 
