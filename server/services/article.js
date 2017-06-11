@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const Article = mongoose.model('article');
 
-function save({ title, perex = '', content, createdAt }) {
-  const article = new Article({ title, perex, content, createdAt});
+function save({ title, perex = '', content }) {
+  const article = new Article({ title, perex, content });
 
-  if (!title || !content || !createdAt) { throw new Error('You must provide title, content and date of creation.'); }
+  if (!title || !content) { throw new Error('You must provide title, content and date of creation.'); }
 
   return article.save(function(err, article) {
     if (err) throw err;
@@ -25,11 +25,6 @@ function remove(id) {
 function findAll() {
   Article.find(function(err, articles) {
     if (err) console.log(err);
-    console.log(articles.length);
-    // for (let i = 0; i < articles.length; i++) {
-    //   console.log(articles[i]);
-    //   console.log('formatted created at: ', articles[i].createdAt.toLocaleDateString());
-    // }
   });
 }
 

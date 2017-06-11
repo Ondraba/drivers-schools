@@ -5,7 +5,7 @@ const ArticleSchema = new Schema({
   title: String,
   perex: String,
   content: String,
-  createdAt: Date
+  createdAt: { type: Date, default: Date.now }
 });
 
 mongoose.model('article', ArticleSchema);
