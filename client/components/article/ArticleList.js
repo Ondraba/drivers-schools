@@ -34,6 +34,9 @@ class ArticleList extends Component {
   render() {    
     return (
       <div>
+        <Link as="/admin/articles/new" href="/admin/articles/create">
+          <a>Add Article</a>
+        </Link>
         {this.renderArticles()}
       </div>
     )

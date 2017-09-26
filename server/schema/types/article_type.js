@@ -1,5 +1,5 @@
 const graphql = require('graphql')
-const { Factory, GraphQLDate } = require('graphql-moment')
+const GrapQLDateTime = require('./DateType')
 const {
   GraphQLObjectType,
   GraphQLString,
@@ -13,7 +13,7 @@ const ArticleType = new GraphQLObjectType({
     title: { type: GraphQLString },
     perex: { type: GraphQLString },
     content: { type: GraphQLString },
-    createdAt: { type: Factory('D. M. YYYY H:mm') }
+    createdAt: { type: GrapQLDateTime }
   }
 })
 

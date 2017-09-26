@@ -4,6 +4,7 @@ const { GraphQLObjectType, GraphQLNonNull, GraphQLID, GraphQLList } = graphql;
 // const UserType = require('./user_type')
 const ArticleType = require('./article_type')
 const Article = mongoose.model('article');
+const ArticleService = require('../../services/article')
 
 const RootQueryType = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -17,7 +18,7 @@ const RootQueryType = new GraphQLObjectType({
     articles: {
       type: new GraphQLList(ArticleType),
       resolve() {
-        return Article.find({});
+        return Article.find({}).sort({ createdAt: -1 })
       }
     },
     article: {

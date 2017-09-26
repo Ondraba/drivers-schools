@@ -1,7 +1,10 @@
 const graphql = require('graphql')
+const GrapQLDateTime = require('../types/DateType')
 const {
   GraphQLObjectType,
-  GraphQLString
+  GraphQLString,
+  GraphQLNonNull,
+  GraphQLID,
 } = graphql
 const ArticleType = require('../types/article_type')
 const Article = require('../../services/article')
@@ -16,10 +19,42 @@ const mutation = new GraphQLObjectType({
         perex: { type: GraphQLString },
         content: { type: GraphQLString }
       },
-      resolve(parentValue, { title, perex, conten }, req) {
+      resolve(parentValue, { title, perex, content }, req) {
         return Article.save({ title, perex, content })
-      }
-    }
+      },
+    },
+    editArticle: {
+      type: ArticleType,
+      args: {
+        id: {
+          name: '_id',
+          type: new GraphQLNonNull(GraphQLID)
+        },
+        title: { type: new GraphQLNonNull(GraphQLString) },
+        perex: { type: GraphQLString },
+        content: { type: new GraphQLNonNull(GraphQLString) },
+        createdAt: { type: new GraphQLNonNull(GrapQLDateTime) },
+      },
+      resolve(parentValue, { id, title, perex, content, createdAt }, req) {
+        if (!perex) {
+          perex = ''
+        }
+
+        return Article.update(id, { title, perex, content, createdAt }, () => {})
+      },
+    },
+    removeArticle: {
+      type: ArticleType,
+      args: {
+        id: {
+          name: '_id',
+          type: new GraphQLNonNull(GraphQLID)
+        },
+      },
+      resolve(parentValue, { id }, req) {
+        return Article.remove(id)
+      },
+    },
   }
 })
 
@@ -28,6 +63,26 @@ const mutation = new GraphQLObjectType({
 //     title
 //     perex
 //     content
+//   }
+// }
+
+// mutation EditArticle($id: ID!, $title: String!, $perex: String, $content: String!, $createdAt: DateTime!) {
+//   editArticle(id: $id, title: $title, perex: $perex, content: $content, createdAt: $createdAt) {
+//     _id
+//     title
+//     perex
+//     content
+//     createdAt
+//   }
+// }
+
+// mutation RemoveArticle($id: ID!) {
+//   removeArticle(id: $id) {
+//     _id
+//     title
+//     perex
+//     content
+//     createdAt
 //   }
 // }
 
