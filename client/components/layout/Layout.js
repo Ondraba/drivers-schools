@@ -2,7 +2,6 @@ import { Provider } from 'react-fela'
 import felaRenderer from '../../../lib/felaRenderer'
 import Link from 'next/link'
 import Head from 'next/head'
-import Body from '../fela/Body'
 import Container from '../fela/Container'
 
 export default({ children, title = 'Page Title' }) => (
