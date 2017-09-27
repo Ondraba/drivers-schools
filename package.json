@@ -17,6 +17,8 @@
     "express": "^4.15.3",
     "express-graphql": "^0.6.6",
     "express-session": "^1.15.3",
+    "fela": "^6.0.0",
+    "fela-preset-web": "^5.0.9",
     "formsy-react": "^0.19.5",
     "graphql": "^0.10.1",
     "graphql-moment": "0.0.2",
@@ -31,6 +33,7 @@
     "react": "^15.5.4",
     "react-apollo": "^1.2.0",
     "react-dom": "^15.5.4",
+    "react-fela": "^6.0.0",
     "redux": "^3.6.0"
   }
 }
