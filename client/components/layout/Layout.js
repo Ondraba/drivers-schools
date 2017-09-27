@@ -1,27 +1,15 @@
-import { Provider } from 'react-fela'
-import felaRenderer from '../../../lib/felaRenderer'
 import Link from 'next/link'
 import Head from 'next/head'
 import Container from '../fela/Container'
+import { Provider } from 'react-fela'
+import felaRenderer from '../../../lib/felaRenderer'
 
 export default({ children, title = 'Page Title' }) => (
-  <Provider renderer={felaRenderer}>
     <div>
       <Head>
         <title>{ title }</title>
-        <meta charSet='utf-8' />
-        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
-      <style jsx global>{`
-        body {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: 'Arial';
-        }
-      `}</style>
-
-
+      <Provider renderer={felaRenderer}>
       <Container>
         <header>
           <nav>
@@ -31,15 +19,13 @@ export default({ children, title = 'Page Title' }) => (
             <Link href='/admin' prefetch><a>Admin</a></Link>
           </nav>
         </header>
-      </Container>
-      <Container>
+
         { children }
-      </Container>
-      <Container>
+        
         <footer>
           {'I`m here to stay'}
         </footer>
       </Container>
+      </Provider>
     </div>
-  </Provider>
 )

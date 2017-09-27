@@ -8,7 +8,7 @@ import { createComponent } from 'react-fela'
 
 export default withData((props) => (
   <App>
-    <Page pathname={props.url.pathname}>
+    <Page title="Homepage" pathname={props.url.pathname}>
       <h1>Index Page</h1>
     </Page>
   </App>
