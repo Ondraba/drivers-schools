@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import query from '../../queries/fetchArticle'
 
 class ArticleDetail extends Component {
   render() {
@@ -20,19 +21,6 @@ class ArticleDetail extends Component {
   }
 }
 
-const query = gql`
-  query ArticleQuery($id: ID!) {
-    article(id: $id) {
-      _id
-      title
-      perex
-      content
-      createdAt
-    }
-  }
-`
-
 export default graphql(query, {
   options: ({ _id }) => { return { variables: { id: _id } }}
 })(ArticleDetail)
-// export default ArticleDetail

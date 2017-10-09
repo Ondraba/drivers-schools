@@ -1,43 +1,74 @@
 import React, { Component } from 'react'
-import Formsy from 'formsy-react'
-import MyOwnInput from '../forms/inputs/Input'
+import Router from 'next/router'
+import { Form, Text, Textarea } from 'react-form'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
+import query from '../../../client/queries/fetchArticles'
 
 // const ArticleNewForm = React.createClass({
 class ArticleNewForm extends Component {
-    constructor(props) {
-      super(props)
-      this.state = {
-        canSubmit: false
-      }
-      this.enableButton = this.enableButton.bind(this)
-      this.disableButton = this.disableButton.bind(this)
-      this.submit = this.submit.bind(this)
-    }
-
-    enableButton() {
-      this.setState({
-        canSubmit: true
-      });
-    }
-
-    disableButton() {
-      this.setState({
-        canSubmit: false
-      });
-    }
-
-    submit(model) {
-      someDep.saveEmail(model.email);
-    }
-
-    render() {
-      return (
-        <Formsy.Form onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
-          <MyOwnInput name="email" validations="isEmail" validationError="This is not a valid email" required/>
-          <button type="submit" disabled={!this.state.canSubmit}>Submit</button>
-        </Formsy.Form>
-      );
-    }
+  constructor(props) {
+    super(props)
+    this.submit = this.submit.bind(this)
   }
 
-export default ArticleNewForm
+  submit({ title, perex, content }) {
+    event.preventDefault()
+
+    this.props.mutate({
+      variables: {
+        title,
+        perex,
+        content
+      },
+      refetchQueries: [{ query }]
+    }).then(() => Router.push('/articles'))
+  }
+
+  // TODO: pekne ostylovat felou
+  render() {
+    return (
+      <Form
+        onSubmit={(values) => {
+          console.log('Success!', values)
+          this.submit(values)
+        }}
+
+        validate={values => {
+          const { title, perex, content } = values
+          return {
+            title: !title ? 'Title is required' : undefined,
+            perex: !perex ? 'Perex is required' : undefined,
+            content: !content ? 'Content is required' : undefined,
+          }
+        }}
+      >
+        {({ values, submitForm, addValue, removeValue, getError }) => {
+
+        return (
+          // When the form is submitted, call the `submitForm` callback prop
+          <form onSubmit={submitForm}>
+            <Text field='title' placeholder='Title' />
+            <Text field='perex' placeholder='Perex' />
+            <Textarea field='content' placeholder='Content...' />
+            <button type="submit">Submit</button>
+          </form>
+        )}}
+      </Form>
+    );
+  }
+}
+
+const mutation = gql`
+  mutation AddArticle($title: String!, $perex: String!, $content: String!) {
+    addArticle(title: $title, perex: $perex, content: $content) {
+      _id
+      title
+      perex
+      content
+      createdAt
+    }
+  }
+`
+
+export default graphql(mutation)(ArticleNewForm)

@@ -31,16 +31,16 @@ const mutation = new GraphQLObjectType({
           type: new GraphQLNonNull(GraphQLID)
         },
         title: { type: new GraphQLNonNull(GraphQLString) },
-        perex: { type: GraphQLString },
+        perex: { type: new GraphQLNonNull(GraphQLString) },
         content: { type: new GraphQLNonNull(GraphQLString) },
-        createdAt: { type: new GraphQLNonNull(GrapQLDateTime) },
+        createdAt: { type: GrapQLDateTime },
       },
-      resolve(parentValue, { id, title, perex, content, createdAt }, req) {
+      resolve(parentValue, { id, title, perex, content }, req) {
         if (!perex) {
           perex = ''
         }
 
-        return Article.update(id, { title, perex, content, createdAt }, () => {})
+        return Article.update(id, { title, perex, content }, () => {})
       },
     },
     removeArticle: {

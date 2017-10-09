@@ -53,6 +53,17 @@ app.prepare()
       app.render(req, res, actualPage, queryParams)
     });
 
+    server.get('/admin/articles/new', (req, res) => {
+      const actualPage = '/admin/articles/create'
+      app.render(req, res, actualPage)
+    });
+
+    server.get('/admin/articles/edit/:id', (req, res) => {
+      const actualPage = '/admin/articles/edit'
+      const queryParams = { _id: req.params.id }
+      app.render(req, res, actualPage, queryParams)
+    });
+
      server.get('*', (req, res) => {
        return handle(req, res)
      })
