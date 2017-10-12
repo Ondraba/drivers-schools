@@ -32,7 +32,7 @@ class ArticleList extends Component {
     return articles.map(({ _id, title, perex, content, createdAt }) => {
       return (
         <div key={_id} style={style}>
-          <Link as={`/articles/${_id}`} href={`/article?_id=${_id}`}>
+          <Link prefetch as={`/articles/${_id}`} href={`/article?_id=${_id}`}>
             <a><h2>{title}</h2></a>
           </Link>
           <p>{createdAt}</p>
@@ -59,7 +59,7 @@ class ArticleList extends Component {
     return (
       <div>
         <div style={{ margin: '15px 0px', textAlign: 'right' }}>
-          <Link as="/admin/articles/new" href="/admin/articles/create">
+          <Link prefetch as="/admin/articles/new" href="/admin/articles/create">
             <a style={{ textDecoration: 'none' }}>Add Article <MdAddCircleOutline style={{ fontSize: 30 }}/></a>
           </Link>
         </div>

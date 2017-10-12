@@ -5,6 +5,7 @@ import felaRenderer from '../lib/felaRenderer'
 export default class MyDocument extends Document {
   static getInitialProps ({ renderPage }) {
     const page = renderPage()
+    felaRenderer.renderStatic('html,body{box-sizing:border-box;margin:0;padding:0;font-family:Arial}')
     const sheetList = renderToSheetList(felaRenderer)
     felaRenderer.clear()
 
@@ -27,21 +28,6 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          {felaRenderer.renderStatic(`
-            * {
-              box-sizing: border-box  
-            }
-
-            body, html {
-              margin: 0;
-              padding: 0;
-              width: 100%;
-              height: 100%;
-              font-family: 'Arial';
-            }
-
-            
-          `)}
           {styleNodes}
         </Head>
         <body>

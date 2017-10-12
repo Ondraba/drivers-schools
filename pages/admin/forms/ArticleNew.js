@@ -22,7 +22,10 @@ class ArticleNewForm extends Component {
         content
       },
       refetchQueries: [{ query }]
-    }).then(() => Router.push('/articles'))
+    }).then(() => {
+      Router.prefetch('/articles')
+      Router.push('/articles')
+    })
   }
 
   // TODO: pekne ostylovat felou
