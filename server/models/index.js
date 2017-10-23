@@ -1,1 +1,2 @@
 require('./article');
+require('./comment');

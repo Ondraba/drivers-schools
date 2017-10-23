@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const graphql = require('graphql')
 const GrapQLDateTime = require('../types/DateType')
 const {
@@ -8,6 +9,7 @@ const {
 } = graphql
 const ArticleType = require('../types/article_type')
 const Article = require('../../services/article')
+const ArticleModel = mongoose.model('article');
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
@@ -54,6 +56,17 @@ const mutation = new GraphQLObjectType({
       resolve(parentValue, { id }, req) {
         return Article.remove(id)
       },
+    },
+    addCommentToArticle: {
+      type: ArticleType,
+      args: {
+        username: { type: new GraphQLNonNull(GraphQLString) },
+        content: { type: new GraphQLNonNull(GraphQLString) },
+        articleId: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve(parentValue, { username, content, articleId }) {
+        return ArticleModel.addComment(articleId, username, content);
+      }
     },
   }
 })

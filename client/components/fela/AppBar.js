@@ -5,8 +5,6 @@ const AppBar = createComponent(({
   color = '#333'
 }) => ({
   lineHeight: 1.5,
-  paddingLeft: 15,
-  paddingRight: 15,
   height: 80,
   backgroundColor,
   color

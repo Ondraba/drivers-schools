@@ -8,6 +8,12 @@ export default gql`
       perex
       content
       createdAt
+      comments {
+        _id
+        username
+        content
+        createdAt
+      }
     }
   }
 `

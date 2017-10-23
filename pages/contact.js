@@ -1,6 +1,6 @@
 import React from 'react'
-import Layout from '../client/components/layout/Layout'
 import Page from '../client/components/layout/Page'
+import Layout from '../client/components/layout/Layout'
 import Container from '../client/components/fela/Container'
 
 export default () => (
