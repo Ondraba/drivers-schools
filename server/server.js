@@ -16,14 +16,17 @@ app.prepare()
    .then(() => {
      const server = express()
 
-     const MONGO_URI = 'mongodb://localhost:27017/technicke-vzdelani';
+    //  const MONGO_URI = 'mongodb://localhost:27017/technicke-vzdelani';
+     const MONGO_URI = 'mongodb://bejf:Forrest.Bejf1@ds231205.mlab.com:31205/tvzdb';
 
      mongoose.Promise = global.Promise;
 
      mongoose.connect(MONGO_URI);
      mongoose.connection
-    .once('open', () => console.log('Connected to MongoDB local instance.'))
-    .on('error', error => console.log('Error connecting to local MongoDB:', error));
+    // .once('open', () => console.log('Connected to MongoDB local instance.'))
+    .once('open', () => console.log('Connected to MongoDB mLab instance.'))
+    // .on('error', error => console.log('Error connecting to local MongoDB:', error));
+    .on('error', error => console.log('Error connecting to mLab MongoDB:', error));
 
     server.use(session({
       resave: true,
