@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "dev": "node server/server.js"
+    "dev": "node server/server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
   },
   "author": "Jan Bejvl",
   "license": "ISC",
