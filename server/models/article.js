@@ -6,6 +6,10 @@ const ArticleSchema = new Schema({
   perex: String,
   content: String,
   createdAt: { type: Date, default: Date.now },
+  likes: {
+    type: Number,
+    default: 0
+  },
   comments: [{
     type: Schema.Types.ObjectId,
     ref: 'comment'
@@ -16,6 +20,14 @@ ArticleSchema.statics.findComments = function(id) {
   return this.findById(id)
     .populate('comments')
     .then(article => article.comments);
+}
+
+ArticleSchema.statics.likeArticle = function(id) {
+  return this.findById(id)
+    .then(article => {
+      article.likes += 1;
+      return article.save();
+    })
 }
 
 ArticleSchema.statics.addComment = function(id, username, content) {

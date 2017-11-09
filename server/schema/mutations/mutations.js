@@ -9,7 +9,9 @@ const {
 } = graphql
 const ArticleType = require('../types/article_type')
 const Article = require('../../services/article')
-const ArticleModel = mongoose.model('article');
+const ArticleModel = mongoose.model('article');``
+const CommentType = require('../types/comment_type');
+const CommentModel = mongoose.model('comment');
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
@@ -68,6 +70,24 @@ const mutation = new GraphQLObjectType({
         return ArticleModel.addComment(articleId, username, content);
       }
     },
+    likeArticle: {
+      type: ArticleType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve(parentValue, { id }, req) {
+        return ArticleModel.likeArticle(id);
+      }
+    },
+    likeComment: {
+      type: CommentType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve(parentValue, { id }, req) {
+        return CommentModel.likeComment(id);
+      }
+    }
   }
 })
 

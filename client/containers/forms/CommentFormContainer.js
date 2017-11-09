@@ -26,6 +26,7 @@ const mutation = gql`
         username
         content
         createdAt
+        likes
       }
     }
   }

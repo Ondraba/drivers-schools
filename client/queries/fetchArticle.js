@@ -8,11 +8,13 @@ export default gql`
       perex
       content
       createdAt
+      likes
       comments {
         _id
         username
         content
         createdAt
+        likes
       }
     }
   }

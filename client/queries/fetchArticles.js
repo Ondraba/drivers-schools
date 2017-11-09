@@ -8,6 +8,7 @@ export default gql`
       perex
       content
       createdAt
+      likes
     }
   }
 `

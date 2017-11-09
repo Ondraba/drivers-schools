@@ -6,6 +6,7 @@ const GrapQLDateTime = require('./DateType')
 const {
   GraphQLObjectType,
   GraphQLString,
+  GraphQLInt,
   GraphQLID,
   GraphQLList
 } = graphql
@@ -18,6 +19,7 @@ const ArticleType = new GraphQLObjectType({
     perex: { type: GraphQLString },
     content: { type: GraphQLString },
     createdAt: { type: GrapQLDateTime },
+    likes: { type: GraphQLInt },
     comments: {
       type: new GraphQLList(CommentType),
       resolve(parentValue) {

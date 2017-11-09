@@ -5,6 +5,7 @@ const GrapQLDateTime = require('./DateType')
 const {
   GraphQLObjectType,
   GraphQLString,
+  GraphQLInt,
   GraphQLID
 } = graphql
 
@@ -15,6 +16,7 @@ const CommentType = new GraphQLObjectType({
     username: { type: GraphQLString },
     content: { type: GraphQLString },
     createdAt: { type: GrapQLDateTime },
+    likes: { type: GraphQLInt },
     article: {
       type: require('./article_type'),
       resolve(parentValue) {

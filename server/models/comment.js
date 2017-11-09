@@ -8,7 +8,19 @@ const CommentSchema = new Schema({
   },
   username: String,
   content: String,
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+  likes: {
+    type: Number,
+    default: 0
+  }
 });
+
+CommentSchema.statics.likeComment = function(id) {
+  return this.findById(id)
+    .then(comment => {
+      comment.likes += 1;
+      return comment.save();
+    })
+}
 
 mongoose.model('comment', CommentSchema);
