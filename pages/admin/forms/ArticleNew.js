@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import Router from 'next/router'
-import { Form, Text, Textarea } from 'react-form'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
-import query from '../../../client/queries/fetchArticles'
+import React, { Component } from 'react';
+import Router from 'next/router';
+import { Formik } from 'formik';
+import Error from '../../../client/components/forms/Error';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+import query from '../../../client/queries/fetchArticles';
 
-// const ArticleNewForm = React.createClass({
 class ArticleNewForm extends Component {
   constructor(props) {
     super(props)
@@ -23,41 +23,105 @@ class ArticleNewForm extends Component {
       },
       refetchQueries: [{ query }]
     }).then(() => {
-      Router.prefetch('/articles')
-      Router.push('/articles')
+      Router.prefetch('/articles');
+    }).then(() => {
+      Router.push('/articles');
     })
   }
 
   // TODO: pekne ostylovat felou
   render() {
     return (
-      <Form
-        onSubmit={(values) => {
-          console.log('Success!', values)
-          this.submit(values)
+      <Formik
+        initialValues={{
+          title: '',
+          perex: '',
+          content: '',
         }}
-
         validate={values => {
-          const { title, perex, content } = values
-          return {
-            title: !title ? 'Title is required' : undefined,
-            perex: !perex ? 'Perex is required' : undefined,
-            content: !content ? 'Content is required' : undefined,
-          }
-        }}
-      >
-        {({ values, submitForm, addValue, removeValue, getError }) => {
+          // same as above, but feel free to move this into a class method now.
+          let errors = {};
 
-        return (
-          // When the form is submitted, call the `submitForm` callback prop
-          <form onSubmit={submitForm}>
-            <Text field='title' placeholder='Title' />
-            <Text field='perex' placeholder='Perex' />
-            <Textarea field='content' placeholder='Content...' />
-            <button type="submit">Submit</button>
+          const {
+            title,
+            perex,
+            content
+          } = values;
+
+          if (!title) {
+            errors.title = 'Title is required';
+          }
+          if (!perex) {
+            errors.perex = 'Perex is required';
+          }
+          if (!content) {
+            errors.content = 'Content is required';
+          }
+
+          return errors;
+        }}
+        onSubmit={(
+          values,
+          { setSubmitting, setErrors, resetForm }
+        ) => {
+          return new Promise((resolve, reject) => {
+            try {
+              resolve(this.submit(values)).then(() => {
+                resetForm();
+              })
+            } catch(err) {
+              reject(err);
+            }
+          });
+        }}
+        render={({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+          handleReset,
+        }) => (
+          <form onSubmit={handleSubmit}>
+            <div>
+              <input
+                type="title"
+                name="title"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.title}
+              />
+              {touched.title && errors.title && <Error value={errors.title} />}
+            </div>
+            <div>
+              <input
+                type="perex"
+                name="perex"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.perex}
+              />
+              {touched.perex && errors.perex && <Error value={errors.perex} />}
+            </div>
+            <div>
+              <textarea
+                type="content"
+                name="content"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.content}
+              />
+              {touched.content && errors.content && <Error value={errors.content} />}
+            </div>
+
+            <button type="submit" disabled={isSubmitting}>
+              Submit
+            </button>
           </form>
-        )}}
-      </Form>
+        )}
+      />
     );
   }
 }

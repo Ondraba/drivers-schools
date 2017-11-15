@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Form, Text, Textarea } from 'react-form'
 import { graphql } from 'react-apollo'
 import CommentForm from '../../components/forms/comment/CommentForm'
 import gql from 'graphql-tag'

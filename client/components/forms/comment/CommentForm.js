@@ -1,15 +1,22 @@
-import React, { Component } from 'react'
-import { Form, Text, Textarea } from 'react-form'
+import React, { Component } from 'react';
+import { Formik } from 'formik';
+import Error from '../Error';
+
+const style = {
+  color: 'red',
+  fontSize: 14,
+  fontWeight: 'bold'
+};
 
 class CommentForm extends Component {
   constructor(props) {
     super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit({ username, content }) {
-    event.preventDefault()
-    const { articleId } = this.props
+    event.preventDefault();
+    const { articleId } = this.props;
 
     this.props.mutate({
       variables: {
@@ -17,52 +24,86 @@ class CommentForm extends Component {
         content,
         articleId
       }
-    })
+    });
   }
 
   render () {
     return (
-      <Form
-        onSubmit={(values, state, props, { resetForm }) => {
-          this.handleSubmit(values)
-          resetForm();
+      <Formik
+        initialValues={{
+          username: '',
+          content: '',
         }}
-
-        defaultValues={{}}
-
         validate={values => {
-          const {
-            username,   
-            content
-          } = values
-          return {
-            username: !username ? 'Username is required' : false,
-            content: !content ? 'Comment is required' : false,
-          }
-        }}
-      >
-        {({ submitForm }) => {
+          // same as above, but feel free to move this into a class method now.
+          let errors = {};
 
-          return (
-            // When the form is submitted, call the `submitForm` callback prop
-            <form onSubmit={submitForm}>
-              <div>
-                <Text 
-                  field='username' 
-                  placeholder='Username' 
-                />
-              </div>
-              <div>
-                <Textarea 
-                  field='content' 
-                  placeholder='Leave a comment...' 
-                />
-              </div>
-              <button type="submit">Submit</button>
-            </form>
-          )
+          const {
+            username,
+            content
+          } = values;
+
+          if (!username) {
+            errors.username = 'Username is required';
+          }
+          if (!content) {
+            errors.content = 'Content is required';
+          }
+
+          return errors;
         }}
-      </Form>
+        onSubmit={(
+          values,
+          { setSubmitting, setErrors, resetForm }
+        ) => {
+          return new Promise((resolve, reject) => {
+            try {
+              resolve(this.handleSubmit(values)).then(() => {
+                resetForm();
+              })
+            } catch(err) {
+              reject(err);
+            }
+          });
+        }}
+        render={({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+          handleReset,
+        }) => (
+          <form onSubmit={handleSubmit}>
+            <div>
+              <input
+                type="username"
+                name="username"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.username}
+              />
+              {touched.username && errors.username && <Error value={errors.username} />}
+            </div>
+            <div>
+              <textarea
+                type="content"
+                name="content"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.content}
+              />
+              {touched.content && errors.content && <Error value={errors.content} />}
+            </div>
+
+            <button type="submit" disabled={isSubmitting}>
+              Submit
+            </button>
+          </form>
+        )}
+      />
     )
   }
 }

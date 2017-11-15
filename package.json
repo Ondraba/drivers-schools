@@ -24,7 +24,8 @@
     "fela": "^6.0.0",
     "fela-dom": "^6.0.0",
     "fela-preset-web": "^5.0.9",
-    "graphql": "^0.10.1",
+    "formik": "^0.10.4",
+    "graphql": "^0.11.7",
     "graphql-moment": "0.0.2",
     "graphql-tag": "^2.2.1",
     "isomorphic-fetch": "^2.2.1",
@@ -38,7 +39,6 @@
     "react-apollo": "^2.0.1",
     "react-dom": "^16.1.0",
     "react-fela": "^6.0.0",
-    "react-form": "^2.9.0",
     "react-icons": "^2.2.7",
     "redux": "^3.7.2"
   }
