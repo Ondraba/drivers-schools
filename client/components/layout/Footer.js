@@ -1,12 +1,9 @@
 import React from 'react'
-import AppBar from '../fela/AppBar'
-import Footer from '../fela/Footer'
-import Container from '../fela/Container'
+//import AppBar from '../fela/AppBar'
+//import Footer from '../fela/Footer'
+//import Container from '../fela/Container'
+import { Button } from 'reactstrap';
 
 export default ({ children }) => (
-  <Footer>
-    <footer>
-      { children }
-    </footer>
-  </Footer>
+  <div><Button color="danger">Danger!</Button></div>
 )
