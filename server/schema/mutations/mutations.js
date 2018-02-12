@@ -9,13 +9,27 @@ const {
 } = graphql
 const ArticleType = require('../types/article_type')
 const Article = require('../../services/article')
-const ArticleModel = mongoose.model('article');``
+const ArticleModel = mongoose.model('article');
+const Game = mongoose.model('game');
+const GameType= require('../types/game_type')
 const CommentType = require('../types/comment_type');
 const CommentModel = mongoose.model('comment');
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
+      createGame: {
+            type: GameType,
+            args: {
+              title: { type: GraphQLString },
+              perex: { type: GraphQLString },
+              content: { type: GraphQLString }
+            },
+            resolve(parentValue, { title, perex, content }, req) {
+              return Game.save({ title, perex, content })
+            },
+          },
+
     addArticle: {
       type: ArticleType,
       args: {

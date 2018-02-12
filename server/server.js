@@ -17,8 +17,7 @@ app.prepare()
    .then(() => {
      const server = express()
 
-    //  const MONGO_URI = 'mongodb://localhost:27017/technicke-vzdelani';
-     const MONGO_URI = 'mongodb://bejf:Forrest.Bejf1@ds231205.mlab.com:31205/tvzdb';
+     const MONGO_URI = 'mongodb://archie:clovek789@ds143744.mlab.com:43744/starterdb';
 
      mongoose.Promise = global.Promise;
 
