@@ -14,7 +14,6 @@ class CreateGame extends Component {
 
   submit({ title, perex, content }) {
     event.preventDefault()
-
     this.props.mutate({
       variables: {
         title,

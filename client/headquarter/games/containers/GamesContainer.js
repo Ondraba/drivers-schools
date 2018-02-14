@@ -1,19 +1,9 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 import GamesList from '../components/GamesList'
-//import gql from 'graphql-tag'
-//import query from '../../queries/fetchArticle'
+import fetchGames from '../../../../client/queries/fetchGames';
+import gql from 'graphql-tag';
 
-class GamesContainer extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { games: ['FIFA18', 'TES6', 'Kingdom Come']}
-  }
+const GamesContainer = graphql(fetchGames)(GamesList)
 
-  render () {
-    return (
-      <GamesList />
-    )
-  }
-}
 export default GamesContainer
