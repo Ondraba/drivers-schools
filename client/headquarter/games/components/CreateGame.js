@@ -1,72 +1,66 @@
-import React, { Component } from 'react';
-import Router from 'next/router';
-import { Formik } from 'formik';
-import Error from '../../../../client/components/forms/Error';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
-import fetchGames from '../../../../client/queries/fetchGames';
+import React, { Component } from "react";
+import Router from "next/router";
+import { Formik } from "formik";
+import Error from "../../../../client/components/forms/Error";
+import { graphql } from "react-apollo";
+import gql from "graphql-tag";
+import fetchGames from "../../../../client/queries/fetchGames";
 
 class CreateGame extends Component {
   constructor(props) {
-    super(props)
-    this.submit = this.submit.bind(this)
+    super(props);
+    this.submit = this.submit.bind(this);
   }
 
   submit({ title, perex, content }) {
-    event.preventDefault()
-    this.props.mutate({
-      variables: {
-        title,
-        perex,
-        content
-      },
-      refetchQueries: [{ query: fetchGames }]
-    }).then(() => {
-      Router.push('/headquarter/games');
-    })
+    event.preventDefault();
+    this.props
+      .mutate({
+        variables: {
+          title,
+          perex,
+          content
+        },
+        refetchQueries: [{ query: fetchGames }]
+      })
+      .then(() => {
+        Router.push("/headquarter/games");
+      });
   }
-
 
   render() {
     return (
       <Formik
         initialValues={{
-          title: '',
-          perex: '',
-          content: '',
+          title: "",
+          perex: "",
+          content: ""
         }}
         validate={values => {
           // same as above, but feel free to move this into a class method now.
           let errors = {};
 
-          const {
-            title,
-            perex,
-            content
-          } = values;
+          const { title, perex, content } = values;
 
           if (!title) {
-            errors.title = 'Title is required';
+            errors.title = "Title is required";
           }
           if (!perex) {
-            errors.perex = 'Perex is required';
+            errors.perex = "Perex is required";
           }
           if (!content) {
-            errors.content = 'Content is required';
+            errors.content = "Content is required";
           }
 
           return errors;
         }}
-        onSubmit={(
-          values,
-          { setSubmitting, setErrors, resetForm }
-        ) => {
+        onSubmit={(values, { setSubmitting, setErrors, resetForm }) => {
           return new Promise((resolve, reject) => {
             try {
               resolve(this.submit(values)).then(() => {
                 resetForm();
-              })
-            } catch(err) {
+              });
+            } catch (err) {
               reject(err);
             }
           });
@@ -79,7 +73,7 @@ class CreateGame extends Component {
           handleBlur,
           handleSubmit,
           isSubmitting,
-          handleReset,
+          handleReset
         }) => (
           <form onSubmit={handleSubmit}>
             <div>
@@ -110,7 +104,8 @@ class CreateGame extends Component {
                 onBlur={handleBlur}
                 value={values.content}
               />
-              {touched.content && errors.content && <Error value={errors.content} />}
+              {touched.content &&
+              errors.content && <Error value={errors.content} />}
             </div>
 
             <button type="submit" disabled={isSubmitting}>
@@ -135,6 +130,6 @@ const mutation = gql`
       likes
     }
   }
-`
+`;
 
-export default graphql(mutation)(CreateGame)
+export default graphql(mutation)(CreateGame);

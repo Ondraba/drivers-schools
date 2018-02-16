@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import { graphql } from 'react-apollo'
-import GamesList from '../components/GamesList'
-import fetchGames from '../../../../client/queries/fetchGames';
-import gql from 'graphql-tag';
+import React, { Component } from "react";
+import { graphql } from "react-apollo";
+import GamesList from "../components/GamesList";
+import fetchEdeeSourceData from "../../../../client/queries/fetchEdeeSourceData";
+import gql from "graphql-tag";
 
-const GamesContainer = graphql(fetchGames)(GamesList)
+const GamesContainer = graphql(fetchEdeeSourceData)(GamesList);
 
-export default GamesContainer
+export default GamesContainer;
