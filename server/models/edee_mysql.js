@@ -29,8 +29,8 @@ const EdeeSourceModel = sequelizedDb.define(
       autoIncrement: true,
       field: "id"
     },
-    sourceId: { type: Sequelize.INTEGER, ield: "sourceId" },
-    versionId: { type: Sequelize.INTEGER, ield: "versionId" },
+    sourceId: { type: Sequelize.INTEGER, field: "sourceId" },
+    versionId: { type: Sequelize.INTEGER, field: "versionId" },
     name: { type: Sequelize.STRING, field: "name" },
     perex: { type: Sequelize.STRING, field: "perex" },
     content: { type: Sequelize.STRING, field: "content" },
