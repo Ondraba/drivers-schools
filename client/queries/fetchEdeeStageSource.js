@@ -2,10 +2,11 @@ import gql from "graphql-tag";
 
 export default gql`
   {
-    ededeeSourceData {
+    edeeStageSource {
       id
-      perex
-      content
+      stageObjectId
+      sourceDataType
+      data
     }
   }
 `;

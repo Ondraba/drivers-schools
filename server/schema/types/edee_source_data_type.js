@@ -1,13 +1,7 @@
 const mongoose = require("mongoose");
 const graphql = require("graphql");
 const GrapQLDateTime = require("./DateType");
-const {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLInt,
-  GraphQLID,
-  GraphQLList
-} = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID } = graphql;
 
 const EdeeSourceDataType = new GraphQLObjectType({
   name: "EdeeSourceDataType",

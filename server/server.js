@@ -5,7 +5,6 @@ const session = require("express-session");
 const expressGraphQL = require("express-graphql");
 const MongoStore = require("connect-mongo")(session);
 const next = require("next");
-const ArticleService = require("./services/article");
 const schema = require("./schema/schema");
 
 const dev = process.env.NODE_ENV !== "production";
@@ -41,10 +40,6 @@ app.prepare().then(() => {
       })
     })
   );
-  // const date = new Date();
-  // ArticleService.save({ title: "Novy clanek 3", perex: "tady nakej perex taky", content: "Lorem ipsum dolor snad uz konecne." });
-
-  ArticleService.findAll();
 
   // Instruct Express to pass on any request made to the '/graphql' route
   // to the GraphQL instance.
@@ -57,22 +52,11 @@ app.prepare().then(() => {
     }))
   );
 
-  server.get("/articles/:id", (req, res) => {
-    const actualPage = "/article";
-    const queryParams = { _id: req.params.id };
-    app.render(req, res, actualPage, queryParams);
-  });
-
-  server.get("/admin/articles/new", (req, res) => {
-    const actualPage = "/admin/articles/create";
-    app.render(req, res, actualPage);
-  });
-
-  server.get("/admin/articles/edit/:id", (req, res) => {
-    const actualPage = "/admin/articles/edit";
-    const queryParams = { _id: req.params.id };
-    app.render(req, res, actualPage, queryParams);
-  });
+  // server.get("/articles/:id", (req, res) => {
+  //   const actualPage = "/article";
+  //   const queryParams = { _id: req.params.id };
+  //   app.render(req, res, actualPage, queryParams);
+  // });
 
   server.get("*", (req, res) => {
     return handle(req, res);

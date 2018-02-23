@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Head from 'next/head'
 
-export default({ children, title = 'Admin' }) => (
+export default({ children, title = 'Full Page Template' }) => (
   <div>
     <Head>
       <title>{ title }</title>
@@ -9,15 +9,9 @@ export default({ children, title = 'Admin' }) => (
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
     </Head>
     <header>
-      <nav>
-        <Link href='/' prefetch><a>Home</a></Link> |
-        <Link href='/admin/articles' prefetch><a>Articles</a></Link> |
-        <Link href='/admin/users' prefetch><a>Users</a></Link>
-      </nav>
+      Full Page Template!
     </header>
-
     { children }
-
     <footer>
       {'I`m here to stay'}
     </footer>

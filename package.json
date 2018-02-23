@@ -1,7 +1,7 @@
 {
-  "name": "technicke-vzdelani",
+  "name": "edeeQL",
   "version": "1.0.0",
-  "description": "Webový portál technického vzdělání v oblasti matematiky, fyziky a informatiky",
+  "description": "Demo EdeeCMS na GraphQL",
   "main": "index.js",
   "scripts": {
     "test": "test",
@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "NODE_ENV=production node server/server.js"
   },
-  "author": "Jan Bejvl",
+  "author": "obanb",
   "license": "ISC",
   "dependencies": {
     "apollo-cache-inmemory": "^1.1.0",
@@ -30,6 +30,7 @@
     "graphql": "^0.11.7",
     "graphql-moment": "0.0.2",
     "graphql-tag": "^2.2.1",
+    "graphql-type-json": "^0.1.4",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
