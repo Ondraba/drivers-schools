@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Router from "next/router";
 import { Formik } from "formik";
-import Error from "../../../../client/components/forms/Error";
+import Error from "./Error";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import fetchGames from "../../../../client/queries/fetchGames";

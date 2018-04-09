@@ -1,40 +1,30 @@
-import Document, { Head, Main, NextScript } from 'next/document'
-import { renderToSheetList } from 'fela-dom'
-import felaRenderer from '../lib/felaRenderer'
+import Document, { Head, Main, NextScript } from "next/document";
 
 export default class MyDocument extends Document {
-  static getInitialProps ({ renderPage }) {
-    const page = renderPage()
-    felaRenderer.renderStatic('html,body{box-sizing:border-box;margin:0;padding:0;font-family:Arial}')
-    const sheetList = renderToSheetList(felaRenderer)
-    felaRenderer.clear()
-
+  static getInitialProps({ renderPage }) {
+    const page = renderPage();
     return {
-      ...page,
-      sheetList
+      ...page
+    };
+  }
+
+  constructor(props) {
+    super(props);
+    const { __NEXT_DATA__, ids } = props;
+    if (ids) {
+      __NEXT_DATA__.ids = this.props.ids;
     }
   }
 
-  render () {
-    const styleNodes = this.props.sheetList.map(({ type, media, css }) =>
-      <style
-        dangerouslySetInnerHTML={{ __html: css }}
-        data-fela-type={type}
-        key={`${type}-${media}`}
-        media={media}
-      />,
-    )
-
+  render() {
     return (
       <html>
-        <Head>
-          {styleNodes}
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />
         </body>
       </html>
-    )
+    );
   }
 }

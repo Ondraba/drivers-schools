@@ -22,11 +22,11 @@ app.prepare().then(() => {
 
   mongoose.connect(MONGO_URI);
   mongoose.connection
-    // .once('open', () => console.log('Connected to MongoDB local instance.'))
-    .once("open", () => console.log("Connected to MongoDB mLab instance."))
-    // .on('error', error => console.log('Error connecting to local MongoDB:', error));
+    .once("open", () =>
+      console.log("Connected to MongoDB mLab Pushstart instance.")
+    )
     .on("error", error =>
-      console.log("Error connecting to mLab MongoDB:", error)
+      console.log("Error connecting to mLab MongoDB Pushstart instance:", error)
     );
 
   server.use(
@@ -41,8 +41,6 @@ app.prepare().then(() => {
     })
   );
 
-  // Instruct Express to pass on any request made to the '/graphql' route
-  // to the GraphQL instance.
   server.use(
     "/graphql",
     expressGraphQL(req => ({
@@ -51,13 +49,6 @@ app.prepare().then(() => {
       graphiql: true
     }))
   );
-
-  // server.get("/articles/:id", (req, res) => {
-  //   const actualPage = "/article";
-  //   const queryParams = { _id: req.params.id };
-  //   app.render(req, res, actualPage, queryParams);
-  // });
-
   server.get("*", (req, res) => {
     return handle(req, res);
   });
