@@ -1,21 +1,20 @@
 const mongoose = require("mongoose");
 const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLNonNull, GraphQLID, GraphQLList } = graphql;
-// const UserType = require('./user_type')
-const Game = mongoose.model("game");
-const GameType = require("./game_type");
+const DriveSchool = mongoose.model("driveSchool");
+const DriveSchoolType = require("./driveSchool_type");
 
 const RootQueryType = new GraphQLObjectType({
   name: "RootQueryType",
   fields: () => ({
-    games: {
-      type: new GraphQLList(GameType),
+    driveSchools: {
+      type: new GraphQLList(DriveSchoolType),
       resolve() {
-        return Game.find({}).sort({ createdAt: -1 });
+        return DriveSchool.find({}).sort({ createdAt: -1 });
       }
     },
-    game: {
-      type: GameType,
+    driveSchool: {
+      type: DriveSchoolType,
       args: {
         id: {
           name: "_id",
@@ -23,7 +22,7 @@ const RootQueryType = new GraphQLObjectType({
         }
       },
       resolve(parentValue, { id }) {
-        return Game.findById(id);
+        return DriveSchool.findById(id);
       }
     }
   })

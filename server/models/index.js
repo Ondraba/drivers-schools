@@ -1,2 +1,2 @@
 require("./userRating");
-require("./game");
+require("./driveSchool");

@@ -18,12 +18,12 @@ const UserRatingType = new GraphQLObjectType({
     createdAt: { type: GrapQLDateTime },
     numRating: { type: GraphQLInt },
     likes: { type: GraphQLInt },
-    game: {
-      type: require('./game_type'),
+    driveSchool: {
+      type: require('./driveSchool_type'),
       resolve(parentValue) {
-        return UserRating.findById(parentValue).populate('game')
+        return UserRating.findById(parentValue).populate('driveSchool')
           .then(userRating => {
-            return userRating.game
+            return userRating.driveSchool
           });
       }
     }

@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e075482f-50a1-4217-a855-e93c8bfb2244" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/headquarter/games/components/CreateGame.js" afterPath="$PROJECT_DIR$/client/headquarter/games/components/CreateGame.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/headquarter/games/components/GamesList.js" afterPath="$PROJECT_DIR$/client/headquarter/games/components/GamesList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/admin/driveSchools/components/CreateDriveSchool.js" afterPath="$PROJECT_DIR$/client/admin/driveSchools/components/CreateDriveSchool.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/admin/driveSchools/components/DriveSchoolsList.js" afterPath="$PROJECT_DIR$/client/admin/driveSchools/components/DriveSchoolsList.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,7 +27,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="FullPageTemplate.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/headquarter/layout/FullPageTemplate.js">
+        <entry file="file://$PROJECT_DIR$/client/admin/layout/FullPageTemplate.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
               <caret line="13" column="16" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="16" />
@@ -36,8 +36,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GamesContainer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/headquarter/games/containers/GamesContainer.js">
+      <file leaf-file-name="DriveSchoolsContainer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/admin/driveSchools/containers/DriveSchoolsContainer.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
               <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
@@ -86,8 +86,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CreateGame.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/headquarter/games/components/CreateGame.js">
+      <file leaf-file-name="CreateDriveSchool.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/admin/driveSchools/components/CreateDriveSchool.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
               <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
@@ -146,28 +146,28 @@
         <option value="$PROJECT_DIR$/pages/articles.js" />
         <option value="$PROJECT_DIR$/client/components/article/ArticleList.js" />
         <option value="$PROJECT_DIR$/.babelrc" />
-        <option value="$PROJECT_DIR$/client/headquarter/layout/FullPageTemplate.js" />
-        <option value="$PROJECT_DIR$/client/headquarter/games/containers/games.js" />
-        <option value="$PROJECT_DIR$/client/headquarter/games/containers/gamesContainer.js" />
-        <option value="$PROJECT_DIR$/pages/headquarter/index.js" />
+        <option value="$PROJECT_DIR$/client/admin/layout/FullPageTemplate.js" />
+        <option value="$PROJECT_DIR$/client/admin/driveSchools/containers/driveSchools.js" />
+        <option value="$PROJECT_DIR$/client/admin/driveSchools/containers/driveSchoolsContainer.js" />
+        <option value="$PROJECT_DIR$/pages/admin/index.js" />
         <option value="$PROJECT_DIR$/client/components/layout/Footer.js" />
-        <option value="$PROJECT_DIR$/server/models/games.js" />
+        <option value="$PROJECT_DIR$/server/models/driveSchools.js" />
         <option value="$PROJECT_DIR$/server/models/userRatings.js" />
         <option value="$PROJECT_DIR$/server/models/index.js" />
         <option value="$PROJECT_DIR$/server/schema/types/user_rating_type.js" />
-        <option value="$PROJECT_DIR$/server/schema/types/game_type.js" />
+        <option value="$PROJECT_DIR$/server/schema/types/driveSchool_type.js" />
         <option value="$PROJECT_DIR$/pages/admin/forms/ArticleNew.js" />
-        <option value="$PROJECT_DIR$/pages/headquarter/games/index.js" />
-        <option value="$PROJECT_DIR$/pages/headquarter/games/create.js" />
-        <option value="$PROJECT_DIR$/client/queries/fetchGames.js" />
+        <option value="$PROJECT_DIR$/pages/admin/driveSchools/index.js" />
+        <option value="$PROJECT_DIR$/pages/admin/driveSchools/create.js" />
+        <option value="$PROJECT_DIR$/client/queries/fetchDriveSchools.js" />
         <option value="$PROJECT_DIR$/server/schema/mutations/mutations.js" />
         <option value="$PROJECT_DIR$/server/server.js" />
-        <option value="$PROJECT_DIR$/server/models/game.js" />
+        <option value="$PROJECT_DIR$/server/models/driveSchool.js" />
         <option value="$PROJECT_DIR$/server/models/userRating.js" />
         <option value="$PROJECT_DIR$/server/schema/types/root_query_type.js" />
-        <option value="$PROJECT_DIR$/client/headquarter/games/containers/GamesContainer.js" />
-        <option value="$PROJECT_DIR$/client/headquarter/games/components/GamesList.js" />
-        <option value="$PROJECT_DIR$/client/headquarter/games/components/CreateGame.js" />
+        <option value="$PROJECT_DIR$/client/admin/driveSchools/containers/DriveSchoolsContainer.js" />
+        <option value="$PROJECT_DIR$/client/admin/driveSchools/components/DriveSchoolsList.js" />
+        <option value="$PROJECT_DIR$/client/admin/driveSchools/components/CreateDriveSchool.js" />
       </list>
     </option>
   </component>
@@ -387,11 +387,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="headquarter" />
+              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="games" />
+              <option name="myItemId" value="driveSchools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -482,10 +482,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\oba\Desktop\nextQL\TheNextOne\client\headquarter\layout" />
+      <recent name="C:\Users\oba\Desktop\nextQL\TheNextOne\client\admin\layout" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\oba\Desktop\nextQL\TheNextOne\pages\headquarter\games" />
+      <recent name="C:\Users\oba\Desktop\nextQL\TheNextOne\pages\admin\driveSchools" />
       <recent name="C:\Users\oba\Desktop\nextQL\TheNextOne\client" />
       <recent name="C:\Users\oba\Desktop\nextQL\TheNextOne\pages" />
     </key>
@@ -812,7 +812,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/headquarter/games/components/game.js">
+    <entry file="file://$PROJECT_DIR$/client/admin/driveSchools/components/driveSchool.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -896,7 +896,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/schema/types/game_type.js">
+    <entry file="file://$PROJECT_DIR$/server/schema/types/driveSchool_type.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
@@ -910,7 +910,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/models/game.js">
+    <entry file="file://$PROJECT_DIR$/server/models/driveSchool.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="635">
           <caret line="42" column="22" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
@@ -931,7 +931,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/headquarter/games/games.js">
+    <entry file="file://$PROJECT_DIR$/pages/admin/driveSchools/driveSchools.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -959,7 +959,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/fela/headquarters/fullPageLayout.js">
+    <entry file="file://$PROJECT_DIR$/client/components/fela/admins/fullPageLayout.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -973,21 +973,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/headquarter/games/game.js">
+    <entry file="file://$PROJECT_DIR$/pages/admin/driveSchools/driveSchool.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/headquarter/games/create.js">
+    <entry file="file://$PROJECT_DIR$/pages/admin/driveSchools/create.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/queries/fetchGames.js">
+    <entry file="file://$PROJECT_DIR$/client/queries/fetchDriveSchools.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
@@ -1001,21 +1001,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/headquarter/games/components/GamesList.js">
+    <entry file="file://$PROJECT_DIR$/client/admin/driveSchools/components/DriveSchoolsList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/headquarter/games/index.js">
+    <entry file="file://$PROJECT_DIR$/pages/admin/driveSchools/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/headquarter/layout/FullPageTemplate.js">
+    <entry file="file://$PROJECT_DIR$/client/admin/layout/FullPageTemplate.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="16" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="16" />
@@ -1023,7 +1023,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/headquarter/games/containers/GamesContainer.js">
+    <entry file="file://$PROJECT_DIR$/client/admin/driveSchools/containers/DriveSchoolsContainer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
@@ -1063,7 +1063,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/headquarter/games/components/CreateGame.js">
+    <entry file="file://$PROJECT_DIR$/client/admin/driveSchools/components/CreateDriveSchool.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
