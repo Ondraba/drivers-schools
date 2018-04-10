@@ -1,20 +1,25 @@
 import React from "react";
 import { graphql } from "react-apollo";
 import Button from 'react-bootstrap/lib/Button';
+import ListGroup from 'react-bootstrap/lib/ListGroup';
+import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
+import PageHeader from 'react-bootstrap/lib/PageHeader';
 
 export default props => {
   const { driveSchools } = props.data;
-  console.log(props);
 
   return (
     <div>
-      {driveSchools.map(driveSchool => (
-        <div>
-          <p key={driveSchool.id + "title"}>{driveSchool.content}</p>
-          <p key={driveSchool.id + "perex"}>{driveSchool.perex}</p>
-        </div>
-      ))}
-      <Button>Submit</Button>
+      <PageHeader>
+      DriveSchools <small>Drive schools rankings</small>
+      </PageHeader>
+      <ListGroup>
+        {driveSchools.map(driveSchool => (
+          <ListGroupItem header={driveSchool.content} key={driveSchool.id + "content"} href="#">
+            {driveSchool.perex}
+          </ListGroupItem>
+        ))}
+      </ListGroup>
     </div>
   );
 };
