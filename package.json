@@ -37,11 +37,12 @@
     "prop-types": "^15.5.10",
     "react": "^16.1.0",
     "react-apollo": "^2.0.1",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.1.0",
     "react-fela": "^6.0.0",
     "react-icons": "^2.2.7",
-    "redux": "^3.7.2",
-    "react-bootstrap": "^0.32.1"
+    "recompose": "^0.26.0",
+    "redux": "^3.7.2"
   },
   "devDependencies": {}
 }
