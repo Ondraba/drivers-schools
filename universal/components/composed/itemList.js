@@ -13,22 +13,17 @@ const ItemList = props => {
   const { driveSchools } = props.data;
 
   return (
-    <FullPageTemplate>
-      <PageHeader>
-        DriveSchools <small>Drive schools rankings</small>
-      </PageHeader>
-      <ListGroup>
-        {driveSchools.map(driveSchool => (
-          <ListGroupItem
-            header={driveSchool.content}
-            key={driveSchool.id + "content"}
-            href="#"
-          >
-            {driveSchool.perex}
-          </ListGroupItem>
-        ))}
-      </ListGroup>
-    </FullPageTemplate>
+    <ListGroup>
+      {driveSchools.map(driveSchool => (
+        <ListGroupItem
+          header={driveSchool.content}
+          key={driveSchool.id + "content"}
+          href="#"
+        >
+          {driveSchool.perex}
+        </ListGroupItem>
+      ))}
+    </ListGroup>
   );
 };
 
