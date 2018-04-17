@@ -1,12 +1,11 @@
 import React from "react";
 
-export default ({ list, handleSetState }) => (
+export default ({ data }) => (
   <div>
-    <button onClick={handleSetState}>Switch</button>
-    {list.map(char => (
-      <div key={char.name}>
-        <div>Character: {char.name}</div>
-        <div>Side: {char.side}</div>
+    {data.map(item => (
+      <div key={item.id}>
+        <div>Title: {item.title}</div>
+        <div>Perex: {item.perex}</div>
       </div>
     ))}
   </div>

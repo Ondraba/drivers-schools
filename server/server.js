@@ -23,10 +23,13 @@ app.prepare().then(() => {
   mongoose.connect(MONGO_URI);
   mongoose.connection
     .once("open", () =>
-      console.log("Connected to MongoDB mLab Pushstart instance.")
+      console.log("Connected to MongoDB mLab DriveSchools instance.")
     )
     .on("error", error =>
-      console.log("Error connecting to mLab MongoDB Pushstart instance:", error)
+      console.log(
+        "Error connecting to mLab MongoDB DriveSchools instance:",
+        error
+      )
     );
 
   server.use(

@@ -1,7 +1,7 @@
 {
-  "name": "pushstart",
+  "name": "DriveSchools",
   "version": "1.0.0",
-  "description": "Pushstart - video driveSchools rankings",
+  "description": "DriveSchools - drive schools rankings.",
   "main": "index.js",
   "scripts": {
     "test": "test",
