@@ -7,6 +7,8 @@ export default gql`
       title
       perex
       content
+      web
+      cars
       createdAt
       sumRating
       likes

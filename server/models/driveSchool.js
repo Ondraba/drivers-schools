@@ -5,6 +5,8 @@ const DriveSchoolSchema = new Schema({
   title: String,
   perex: String,
   content: String,
+  web: String,
+  cars: String,
   createdAt: { type: Date, default: Date.now },
   sumRating: {
     type: Number,

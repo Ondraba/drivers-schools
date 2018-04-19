@@ -18,6 +18,8 @@ const DriveSchoolType = new GraphQLObjectType({
     title: { type: GraphQLString },
     perex: { type: GraphQLString },
     content: { type: GraphQLString },
+    web: { type: GraphQLString },
+    cars: { type: GraphQLString },
     createdAt: { type: GrapQLDateTime },
     sumRating:{ type: GraphQLInt },
     likes: { type: GraphQLInt },
