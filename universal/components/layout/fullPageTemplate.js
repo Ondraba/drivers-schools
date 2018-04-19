@@ -1,4 +1,6 @@
 import Head from "next/head";
+import Jumbotron from "react-bootstrap/lib/Jumbotron";
+import Button from "react-bootstrap/lib/Button";
 
 export default ({ children, title = "Full Page Template" }) => (
   <div>
@@ -13,8 +15,23 @@ export default ({ children, title = "Full Page Template" }) => (
         crossorigin="anonymous"
       />
     </Head>
-    <header>Hi Todo</header>
+    <header>
+      <Jumbotron style={styles}>
+        <h1>Autoškoly Kolín</h1>
+        <p>
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore."
+        </p>
+        <p>
+          <Button bsStyle="primary">Learn more</Button>
+        </p>
+      </Jumbotron>
+    </header>
     {children}
     <footer>Footer</footer>
   </div>
 );
+
+const styles = {
+  padding: "20px"
+};
