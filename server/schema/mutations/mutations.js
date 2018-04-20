@@ -13,10 +13,12 @@ const mutation = new GraphQLObjectType({
       args: {
         title: { type: GraphQLString },
         perex: { type: GraphQLString },
-        content: { type: GraphQLString }
+        content: { type: GraphQLString },
+        web: { type: GraphQLString },
+        cars: { type: GraphQLString }
       },
-      resolve(parentValue, { title, perex, content }, req) {
-        return DriveSchool.save({ title, perex, content });
+      resolve(parentValue, { title, perex, content, web, cars }, req) {
+        return DriveSchool.save({ title, perex, content, web, cars });
       }
     }
   }

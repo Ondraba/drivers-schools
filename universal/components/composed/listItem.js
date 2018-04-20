@@ -3,7 +3,7 @@ import Panel from "react-bootstrap/lib/Panel";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 
-export default ({ content, title, perex }) => (
+export default ({ content, title, perex, web, cars }) => (
   <Panel bsStyle="info" style={styles.panel}>
     <Panel.Heading>
       <Panel.Title componentClass="h3">{title}</Panel.Title>
@@ -11,12 +11,22 @@ export default ({ content, title, perex }) => (
     <Panel.Body>
       <Row className="show-grid" style={styles.row}>
         <Col xs={12} md={12}>
-          {content} 
+          {content}
         </Col>
       </Row>
       <Row className="show-grid" style={styles.row}>
         <Col xs={12} md={12}>
-          {perex} 
+          {perex}
+        </Col>
+      </Row>
+      <Row className="show-grid" style={styles.row}>
+        <Col xs={12} md={12}>
+          <a href={web}>{web}</a>
+        </Col>
+      </Row>
+      <Row className="show-grid" style={styles.row}>
+        <Col xs={12} md={12}>
+          {cars}
         </Col>
       </Row>
     </Panel.Body>
@@ -24,12 +34,12 @@ export default ({ content, title, perex }) => (
 );
 
 const styles = {
-  panel :{
+  panel: {
     margin: "20px",
     width: "15%",
     float: "left"
   },
-  row :{
-    marginBottom: "20px",
+  row: {
+    marginBottom: "20px"
   }
 };
