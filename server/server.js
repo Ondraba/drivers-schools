@@ -6,11 +6,12 @@ const expressGraphQL = require("express-graphql");
 const MongoStore = require("connect-mongo")(session);
 const next = require("next");
 const schema = require("./schema/schema");
+const routes = require("./services/routes");
 
 const dev = process.env.NODE_ENV !== "production";
 const port = process.env.PORT || 3000;
 const app = next({ dev });
-const handle = app.getRequestHandler();
+const handler = routes.getRequestHandler(app);
 
 app.prepare().then(() => {
   const server = express();
@@ -52,14 +53,9 @@ app.prepare().then(() => {
       graphiql: true
     }))
   );
-  server.get("*", (req, res) => {
-    return handle(req, res);
-  });
 
-  server.listen(5000, err => {
-    if (err) throw err;
-    console.log("> Ready on port ${port}");
-  });
+  server.use(handler).listen(5000);
 
   module.exports = server;
 });
+

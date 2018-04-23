@@ -12,11 +12,12 @@ class CreateDriveSchool extends Component {
     this.submit = this.submit.bind(this);
   }
 
-  submit({ title, perex, content, web, cars }) {
+  submit({ nextUrl, title, perex, content, web, cars }) {
     event.preventDefault();
     this.props
       .mutate({
         variables: {
+          nextUrl,
           title,
           perex,
           content,
@@ -34,6 +35,7 @@ class CreateDriveSchool extends Component {
     return (
       <Formik
         initialValues={{
+          nextUrl: "",
           title: "",
           perex: "",
           content: "",
@@ -44,8 +46,11 @@ class CreateDriveSchool extends Component {
           // same as above, but feel free to move this into a class method now.
           let errors = {};
 
-          const { title, perex, content, web, cars } = values;
+          const { nextUrl, title, perex, content, web, cars } = values;
 
+          if (!nextUrl) {
+            errors.nextUrl = "NextUrl is required";
+          }
           if (!title) {
             errors.title = "Title is required";
           }
@@ -84,7 +89,17 @@ class CreateDriveSchool extends Component {
           isSubmitting,
           handleReset
         }) => (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>\
+          <div>
+              <input
+                type="content"
+                name="nextUrl"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.nextUrl}
+              />
+              {touched.nextUrl && errors.nextUrl && <Error value={errors.nextUrl} />}
+            </div>
             <div>
               <input
                 type="title"
@@ -149,6 +164,7 @@ class CreateDriveSchool extends Component {
 
 const mutation = gql`
   mutation CreateDriveSchool(
+    $nextUrl: String!
     $title: String!
     $perex: String!
     $content: String!
@@ -156,6 +172,7 @@ const mutation = gql`
     $cars: String!
   ) {
     createDriveSchool(
+      nextUrl: $nextUrl
       title: $title
       perex: $perex
       content: $content
@@ -163,6 +180,7 @@ const mutation = gql`
       cars: $cars
     ) {
       _id
+      nextUrl
       title
       perex
       content

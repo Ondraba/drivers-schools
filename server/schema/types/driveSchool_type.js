@@ -15,6 +15,7 @@ const DriveSchoolType = new GraphQLObjectType({
   name: 'DriveSchoolType',
   fields: () => ({
     _id: { type: GraphQLID },
+    nextUrl: { type: GraphQLString },
     title: { type: GraphQLString },
     perex: { type: GraphQLString },
     content: { type: GraphQLString },

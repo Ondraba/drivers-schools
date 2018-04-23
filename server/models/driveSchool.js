@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const routes = require("../services/routes");
 
 const DriveSchoolSchema = new Schema({
+  nextUrl: String,
   title: String,
   perex: String,
   content: String,
@@ -25,6 +27,7 @@ const DriveSchoolSchema = new Schema({
 });
 
 DriveSchoolSchema.statics.save = function({
+  nextUrl,
   title,
   perex,
   content,
@@ -32,10 +35,19 @@ DriveSchoolSchema.statics.save = function({
   cars
 }) {
   const DriveSchool = this;
-  const driveSchool = new DriveSchool({ title, perex, content, web, cars });
+  const driveSchool = new DriveSchool({ nextUrl, title, perex, content, web, cars });
 
   if (!title || !content) {
     throw new Error("You must provide title and content");
+  }
+
+  if (nextUrl){
+    try {
+      routes.add(nextUrl, 'driveSchool');
+    }
+    catch(err) {
+      throw new Error("New next route init failed", err);
+    }
   }
 
   return driveSchool.save((err, driveSchool) => {
