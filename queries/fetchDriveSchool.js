@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 export default gql`
-  {
-    driveSchools {
+query FetchDriveSchool($nextUrl: String!){
+    driveSchool(nextUrl: $nextUrl) {
       _id
       nextUrl
       title
@@ -16,3 +16,4 @@ export default gql`
     }
   }
 `;
+

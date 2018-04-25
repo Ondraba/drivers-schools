@@ -16,13 +16,13 @@ const RootQueryType = new GraphQLObjectType({
     driveSchool: {
       type: DriveSchoolType,
       args: {
-        id: {
-          name: "_id",
+        nextUrl: {
+          name: "nextUrl",
           type: new GraphQLNonNull(GraphQLID)
         }
       },
-      resolve(parentValue, { id }) {
-        return DriveSchool.findById(id);
+      resolve(parentValue, { nextUrl }) {
+        return DriveSchool.findById(nextUrl);
       }
     }
   })

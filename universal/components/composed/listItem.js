@@ -4,11 +4,11 @@ import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 import Link from 'next/link'
 
-export default ({ content, title, perex, web, cars }) => (
+export default ({ nextUrl, content, title, perex, web, cars }) => (
   <Panel bsStyle="info" style={styles.panel}>
     <Panel.Heading>
       <Panel.Title componentClass="h3">
-      <Link href="/detail">
+      <Link href={`detail?nextUrl=${nextUrl}`}>
          <a>{title}</a>
         </Link>
       </Panel.Title>
