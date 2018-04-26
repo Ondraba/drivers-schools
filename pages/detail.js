@@ -3,7 +3,7 @@ import withData from "../lib/withData";
 import FullPageTemplate from "../universal/components/layout/fullPageTemplate";
 import ItemDetail from "../universal/components/composed/itemDetail";
 
-const Detail = (props) => {
+const Detail = props => {
   return (
     <FullPageTemplate>
       <ItemDetail {...props} />

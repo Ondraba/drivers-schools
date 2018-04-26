@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLNonNull, GraphQLID, GraphQLList } = graphql;
+const { GraphQLObjectType, GraphQLNonNull, GraphQLID, GraphQLList, GraphQLString } = graphql;
 const DriveSchool = mongoose.model("driveSchool");
 const DriveSchoolType = require("./driveSchool_type");
 
@@ -17,12 +17,13 @@ const RootQueryType = new GraphQLObjectType({
       type: DriveSchoolType,
       args: {
         nextUrl: {
-          name: "nextUrl",
-          type: new GraphQLNonNull(GraphQLID)
+          type: new GraphQLNonNull(GraphQLString)
         }
       },
       resolve(parentValue, { nextUrl }) {
-        return DriveSchool.findById(nextUrl);
+        return DriveSchool.findOne({
+          where: { nextUrl: nextUrl }
+        });
       }
     }
   })
