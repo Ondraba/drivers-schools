@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const graphql = require('graphql')
-const UserRatingType = require('./user_rating_type')
+// const UserRatingType = require('./user_rating_type')
 const DriveSchool = mongoose.model('driveSchool');
 const GrapQLDateTime = require('./DateType')
 const {
@@ -23,13 +23,13 @@ const DriveSchoolType = new GraphQLObjectType({
     cars: { type: GraphQLString },
     createdAt: { type: GrapQLDateTime },
     sumRating:{ type: GraphQLInt },
-    likes: { type: GraphQLInt },
-    userRatings: {
-      type: new GraphQLList(UserRatingType),
-      resolve(parentValue) {
-        return DriveSchool.findUserRatings(parentValue._id)
-      }
-    }
+    likes: { type: GraphQLInt }
+    // userRatings: {
+    //   type: new GraphQLList(UserRatingType),
+    //   resolve(parentValue) {
+    //     return DriveSchool.findUserRatings(parentValue._id)
+    //   }
+    // }
   })
 })
 

@@ -1,19 +1,17 @@
 import React from "react";
-import Panel from "react-bootstrap/lib/Panel";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
-import Link from 'next/link'
+import Link from 'next/link';
 
 export default ({ nextUrl, content, title, perex, web, cars }) => (
-  <Panel bsStyle="info" style={styles.panel}>
-    <Panel.Heading>
-      <Panel.Title componentClass="h3">
-      <Link href={`detail?nextUrl=${nextUrl}`}>
-         <a>{title}</a>
-        </Link>
-      </Panel.Title>
-    </Panel.Heading>
-    <Panel.Body>
+  <Col sm={3} style={styles.col}>
+      <Row className="show-grid" style={styles.row}>
+        <Col xs={12} md={12}>
+          <Link href={`detail?nextUrl=${nextUrl}`}>
+            <a style={styles.a}>{title}</a>
+          </Link>
+        </Col>
+      </Row>
       <Row className="show-grid" style={styles.row}>
         <Col xs={12} md={12}>
           {content}
@@ -34,15 +32,21 @@ export default ({ nextUrl, content, title, perex, web, cars }) => (
           {cars}
         </Col>
       </Row>
-    </Panel.Body>
-  </Panel>
+  </Col>
 );
 
 const styles = {
-  panel: {
-    margin: "20px",
-    width: "15%",
-    float: "left"
+  a:{
+    fontWeight: "bold",
+    fontSize: "22px"
+  },
+  col:{
+    float:"left", 
+    padding: "10px",
+    backgroundColor: "#f7e4d2",
+    border: "10px solid white",
+    marginBottom: "20px",
+    height: "340px"
   },
   row: {
     marginBottom: "20px"

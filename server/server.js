@@ -6,12 +6,11 @@ const expressGraphQL = require("express-graphql");
 const MongoStore = require("connect-mongo")(session);
 const next = require("next");
 const schema = require("./schema/schema");
-const routes = require("./services/routes");
 
 const dev = process.env.NODE_ENV !== "production";
 const port = process.env.PORT || 3000;
 const app = next({ dev });
-const handler = routes.getRequestHandler(app);
+const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
   const server = express();
@@ -54,7 +53,14 @@ app.prepare().then(() => {
     }))
   );
 
-  server.use(handler).listen(5000);
+  server.get('*', (req, res) => {
+    return handle(req, res)
+  })
+
+  server.listen(5000, (err) => {
+    if (err) throw err
+    console.log('> DriveSchools server ready on port ${port}')
+  });
 
   module.exports = server;
 });

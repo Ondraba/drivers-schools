@@ -1,18 +1,16 @@
 import gql from "graphql-tag";
 
 export default gql`
-query FetchDriveSchool($nextUrl: String!){
-    driveSchool(nextUrl: $nextUrl) {
-      _id
+query DriveSchool($nextUrl: String!){
+    driveSchool(nextUrl: $nextUrl){
       nextUrl
       title
       perex
       content
-      createdAt
-      sumRating
-      likes
       web
       cars
+      createdAt
+      likes
     }
   }
 `;

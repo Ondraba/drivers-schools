@@ -9,7 +9,6 @@ export default gql`
       perex
       content
       createdAt
-      sumRating
       likes
       web
       cars

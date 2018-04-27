@@ -1,9 +1,8 @@
 import Head from "next/head";
-import Jumbotron from "react-bootstrap/lib/Jumbotron";
 import Button from "react-bootstrap/lib/Button";
 
 export default ({ children, title = "Autoškoly Kolín" }) => (
-  <div>
+  <div id="globalWrapper" style={styles.globalWrapper}>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
@@ -15,23 +14,37 @@ export default ({ children, title = "Autoškoly Kolín" }) => (
         crossorigin="anonymous"
       />
     </Head>
-    <header>
-      <Jumbotron style={styles}>
-        <h1>Autoškoly Kolín</h1>
-        <p>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore."
-        </p>
-        <p>
-          <Button bsStyle="primary">Learn more</Button>
-        </p>
-      </Jumbotron>
+    <header style={styles.header}>
+        <h1 style={styles.logo}><span style={styles.logo.p1}>zprava</span><span style={styles.logo.p2}>dobry</span><span style={styles.logo.p1}>.</span></h1>
     </header>
-    {children}
-    <footer>Footer</footer>
+    <div>
+      {children}
+    </div> 
+    <footer style={styles.footer}>Footer</footer>
   </div>
 );
 
 const styles = {
-  padding: "20px"
+  globalWrapper:{
+    paddingLeft: "60px",
+    paddingRight: "60px"
+  },
+  header:{
+    height: "120px",
+    paddingTop: "10px"
+  },
+  logo: {
+    fontWeight: "bold",
+    fontSize: "54px",
+    p1 :{
+      color: "#c94a38"
+    },
+    p2: {
+      color: "#f48f00"
+    }
+  },
+  footer: {
+    float: "left",
+    width: "100%"
+  }
 };

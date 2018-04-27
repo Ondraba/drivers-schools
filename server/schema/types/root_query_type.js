@@ -21,9 +21,7 @@ const RootQueryType = new GraphQLObjectType({
         }
       },
       resolve(parentValue, { nextUrl }) {
-        return DriveSchool.findOne({
-          where: { nextUrl: nextUrl }
-        });
+        return DriveSchool.findOne({ nextUrl: nextUrl });
       }
     }
   })

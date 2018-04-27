@@ -12,7 +12,7 @@ const ItemList = props => {
   const { driveSchools } = props.data;
 
   return (
-    <div>
+    <div style={styles}>
       {driveSchools.map(driveSchool => (
         <ListItem key={driveSchool.id} {...driveSchool} />
       ))}
@@ -21,3 +21,7 @@ const ItemList = props => {
 };
 
 export default graphql(fetchDriveSchools)(ItemList);
+
+const styles = {
+  marginTop: "40px"
+}
