@@ -1,7 +1,7 @@
 import React from "react";
 import withData from "../lib/withData";
 import FullPageTemplate from "../universal/components/layout/fullPageTemplate";
-import ItemDetail from "../universal/components/composed/itemDetail";
+import ItemDetail from "../universal/components/detail/itemDetail";
 
 const Detail = props => {
   return (
