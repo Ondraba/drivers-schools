@@ -9,6 +9,7 @@ const UserRatingSchema = new Schema({
   username: String,
   content: String,
   numRating: Number,
+  cards: [],
   createdAt: { type: Date, default: Date.now },
   likes: {
     type: Number,

@@ -4,7 +4,6 @@ import { Formik } from "formik";
 import Error from "./Error";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
-import fetchDriveSchools from "../../../queries/fetchDriveSchools";
 
 class CreateRanking extends Component {
   constructor(props) {
@@ -12,17 +11,15 @@ class CreateRanking extends Component {
     this.submit = this.submit.bind(this);
   }
 
-  submit({ nextUrl, title, perex, content, web, cars }) {
+  submit({ userName, content, numRating, cards }) {
     event.preventDefault();
     this.props
       .mutate({
         variables: {
-          nextUrl,
-          title,
-          perex,
-          content,
-          web,
-          cars
+            userName, 
+            content, 
+            numRating,
+            cards 
         },
         refetchQueries: [{ query: fetchDriveSchools }]
       })
@@ -35,36 +32,28 @@ class CreateRanking extends Component {
     return (
       <Formik
         initialValues={{
-          nextUrl: "",
-          title: "",
-          perex: "",
+          userName: "",
           content: "",
-          web: "",
-          cars: ""
+          numRating: "",
+          cards: ""
         }}
         validate={values => {
           // same as above, but feel free to move this into a class method now.
           let errors = {};
 
-          const { nextUrl, title, perex, content, web, cars } = values;
+          const { userName, content, numRating, cards } = values;
 
-          if (!nextUrl) {
-            errors.nextUrl = "NextUrl is required";
-          }
-          if (!title) {
-            errors.title = "Title is required";
-          }
-          if (!perex) {
-            errors.perex = "Perex is required";
+          if (!userName) {
+            errors.userName = "UserName is required";
           }
           if (!content) {
             errors.content = "Content is required";
           }
-          if (!web) {
-            errors.web = "Web is required";
+          if (!numRating) {
+            errors.perex = "NumRating is required";
           }
-          if (!cars) {
-            errors.cars = "Cars is required";
+          if (!cards) {
+            errors.content = "Cards is required";
           }
           return errors;
         }}
@@ -93,65 +82,45 @@ class CreateRanking extends Component {
           <div>
               <input
                 type="content"
-                name="nextUrl"
+                name="userName"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.nextUrl}
+                value={values.userName}
               />
-              {touched.nextUrl && errors.nextUrl && <Error value={errors.nextUrl} />}
+              {touched.userName && errors.userName && <Error value={errors.userName} />}
             </div>
             <div>
               <input
-                type="title"
-                name="title"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.title}
-              />
-              {touched.title && errors.title && <Error value={errors.title} />}
-            </div>
-            <div>
-              <input
-                type="perex"
-                name="perex"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.perex}
-              />
-              {touched.perex && errors.perex && <Error value={errors.perex} />}
-            </div>
-            <div>
-              <textarea
                 type="content"
                 name="content"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.content}
               />
-              {touched.content &&
-              errors.content && <Error value={errors.content} />}
+              {touched.content && errors.content && <Error value={errors.content} />}
+            </div>
+            <div>
+              <input
+                type="content"
+                name="numRating"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.numRating}
+              />
+              {touched.numRating && errors.numRating && <Error value={errors.numRating} />}
             </div>
             <div>
               <textarea
                 type="content"
-                name="web"
+                name="cards"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.web}
+                value={values.cards}
               />
-              {touched.web && errors.web && <Error value={errors.web} />}
+              {touched.cards &&
+              errors.cards && <Error value={errors.cards} />}
             </div>
-            <div>
-              <textarea
-                type="content"
-                name="cars"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.cars}
-              />
-              {touched.cars && errors.cars && <Error value={errors.cars} />}
-            </div>
-
+    
             <button type="submit" disabled={isSubmitting}>
               Submit
             </button>
