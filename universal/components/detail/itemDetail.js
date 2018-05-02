@@ -2,8 +2,6 @@ import React from "react";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
-import DriveSchool from "../../../queries/driveSchool";
-
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 import Link from 'next/link';
@@ -13,7 +11,8 @@ import { RenderWhileLoading } from "../helpers/renderWhileLoading";
 import { RenderWhileError } from "../helpers/renderWhileError";
 
 const ItemDetail = props => {
-  const { driveSchool : { nextUrl, title, content, perex, web, cars }} = props.data;
+  console.log(props)
+  const { driveSchool : { nextUrl, title, content, perex, web, cars }} = props._data;
   return (
     <Col sm={3} style={styles.col}>
       <Row className="show-grid" style={styles.row}>
@@ -65,18 +64,10 @@ const styles = {
   }
 };
 
-const data =  graphql(DriveSchool, {
-  options: ({nextUrl}) => {
-      return {
-          variables: { nextUrl }
-      };
-  }
-})
 
 export default compose(
-  data,
-  RenderWhileLoading("data"),
-  RenderWhileError("data")
+  RenderWhileLoading("_data"),
+  RenderWhileError("_data")
 )(ItemDetail);
 
 
