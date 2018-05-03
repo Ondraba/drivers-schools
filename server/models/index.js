@@ -1,2 +1,2 @@
-// require("./userRating");
+require("./userRating");
 require("./driveSchool");

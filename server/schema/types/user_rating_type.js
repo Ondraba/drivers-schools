@@ -15,7 +15,7 @@ const UserRatingType = new GraphQLObjectType({
     _id: { type: GraphQLID },
     username: { type: GraphQLString },
     content: { type: GraphQLString },
-    cards: { type: [GraphQLString] },
+    cards: { type: GraphQLString },
     createdAt: { type: GrapQLDateTime },
     numRating: { type: GraphQLInt },
     likes: { type: GraphQLInt },

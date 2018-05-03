@@ -9,21 +9,28 @@ const DriveSchoolSchema = new Schema({
   web: String,
   cars: String,
   createdAt: { type: Date, default: Date.now },
-  // sumRating: {
-  //   type: Number,
-  //   default: 0
-  // },
+  overallRatingNumber:{ 
+    type: Number,
+    default: 0
+  },
+  ratingCount:{ 
+    type: Number,
+    default: 0
+  },
+  ratingResult:{ 
+    type: Number,
+    default: 0
+  },
   likes: {
     type: Number,
     default: 0
-  }
-  // ,
-  // userRatings: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "userRating"
-  //   }
-  // ]
+  },
+  userRatings: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "userRating"
+    }
+  ]
 });
 
 DriveSchoolSchema.statics.save = function({
@@ -46,11 +53,11 @@ DriveSchoolSchema.statics.save = function({
   });
 };
 
-// DriveSchoolSchema.statics.findUserRatings = function(id) {
-//   return this.findById(id)
-//     .populate("userRatings")
-//     .then(driveSchool => driveSchool.userRatings);
-// };
+DriveSchoolSchema.statics.findUserRatings = function(id) {
+  return this.findById(id)
+    .populate("userRatings")
+    .then(driveSchool => driveSchool.userRatings);
+};
 
 // DriveSchoolSchema.statics.likeDriveSchool = function(id) {
 //   return this.findById(id).then(driveSchool => {
@@ -59,26 +66,27 @@ DriveSchoolSchema.statics.save = function({
 //   });
 // };
 
-// DriveSchoolSchema.statics.addUserRating = function(
-//   id,
-//   username,
-//   content,
-//   numRating
-// ) {
-//   const UserRating = mongoose.model("userRating");
+DriveSchoolSchema.statics.addUserRating = function(
+  driveSchoolId,
+  username,
+  content,
+  numRating,
+  cards
+) {
+  const UserRating = mongoose.model("userRating");
 
-//   return this.findById(id).then(driveSchool => {
-//     const userRating = new UserRating({
-//       username,
-//       content,
-//       numRating,
-//       driveSchool
-//     });
-//     driveSchool.userRatings.push(userRating);
-//     return Promise.all([userRating.save(), driveSchool.save()]).then(
-//       ([userRating, driveSchool]) => driveSchool
-//     );
-//   });
-// };
+  return this.findById(driveSchoolId).then(driveSchool => {
+    const userRating = new UserRating({
+      username,
+      content,
+      numRating,
+      driveSchool
+    });
+    driveSchool.userRatings.push(userRating);
+    return Promise.all([userRating.save(), driveSchool.save()]).then(
+      ([userRating, driveSchool]) => driveSchool
+    );
+  });
+};
 
 mongoose.model("driveSchool", DriveSchoolSchema);

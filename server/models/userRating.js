@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserRatingSchema = new Schema({
-  userRating: {
+  driveSchool: {
     type: Schema.Types.ObjectId,
-    ref: 'userRating'
+    ref: 'driveSchool'
   },
   username: String,
   content: String,
   numRating: Number,
-  cards: [],
+  cards: String,
   createdAt: { type: Date, default: Date.now },
   likes: {
     type: Number,

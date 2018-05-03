@@ -11,7 +11,6 @@ import { RenderWhileLoading } from "../helpers/renderWhileLoading";
 import { RenderWhileError } from "../helpers/renderWhileError";
 
 const ItemDetail = props => {
-  console.log(props)
   const { driveSchool : { nextUrl, title, content, perex, web, cars }} = props._data;
   return (
     <Col sm={3} style={styles.col}>

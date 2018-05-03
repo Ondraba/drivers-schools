@@ -3,6 +3,8 @@ const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLNonNull, GraphQLID, GraphQLList, GraphQLString } = graphql;
 const DriveSchool = mongoose.model("driveSchool");
 const DriveSchoolType = require("./driveSchool_type");
+const UserRating = mongoose.model("userRating");
+const UserRatingType = require("./user_rating_type");
 
 const RootQueryType = new GraphQLObjectType({
   name: "RootQueryType",
@@ -23,7 +25,14 @@ const RootQueryType = new GraphQLObjectType({
       resolve(parentValue, { nextUrl }) {
         return DriveSchool.findOne({ nextUrl: nextUrl });
       }
-    }
+    },
+    userRating: {
+      type: UserRatingType,
+      args: { id: { type: new GraphQLNonNull(GraphQLID) } },
+      resolve(parentValue, { id }) {
+        return UserRatingType.findById(id);
+      }
+    },
   })
 });
 
