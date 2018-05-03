@@ -21,22 +21,21 @@ const mutation = new GraphQLObjectType({
       resolve(parentValue, { nextUrl, title, perex, content, web, cars }, req) {
         return DriveSchool.save({ nextUrl, title, perex, content, web, cars });
       }
-    }
-  },
-  addUserRating: {
-    type: DriveSchoolType,
-    args: {
-      driveSchoolId: { type: GraphQLID },
-      userName: { type: GraphQLString },
-      content: { type: GraphQLString },
-      numRating: { type: GraphQLInt },
-      cards: { type: GraphQLString },
     },
-    resolve(parentValue, { driveSchoolId, userName, content, numRating, cards }) {
-      return DriveSchool.addUserRating(driveSchoolId, userName, content, numRating, cards);
+    addUserRating: {
+      type: DriveSchoolType,
+      args: {
+        driveSchoolId: { type: GraphQLID },
+        userName: { type: GraphQLString },
+        content: { type: GraphQLString },
+        numRating: { type: GraphQLInt },
+        cards: { type: GraphQLString },
+      },
+      resolve(parentValue, { driveSchoolId, userName, content, numRating, cards }) {
+        return DriveSchool.addUserRating(driveSchoolId, userName, content, numRating, cards);
+      }
     }
   }
 });
 
 module.exports = mutation;
-

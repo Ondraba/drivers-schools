@@ -136,9 +136,9 @@ class CreateRating extends Component {
 const mutation = gql`
     mutation AddUserRating($driveSchoolId: ID, $userName: String, $content: String, $numRating: Int, $cards: String){
       addUserRating(driveSchoolId: $driveSchoolId, userName: $userName,content: $content, numRating: $numRating, cards: $cards){
-            id 
+            _id
             userRatings{
-                id
+                _id
                 userName
                 content
                 numRating
@@ -149,3 +149,4 @@ const mutation = gql`
 `;
 
 export default graphql(mutation)(CreateRating);
+

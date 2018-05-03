@@ -13,7 +13,7 @@ const UserRatingType = new GraphQLObjectType({
   name: 'UserRatingType',
   fields: () => ({
     _id: { type: GraphQLID },
-    username: { type: GraphQLString },
+    userName: { type: GraphQLString },
     content: { type: GraphQLString },
     cards: { type: GraphQLString },
     createdAt: { type: GrapQLDateTime },

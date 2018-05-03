@@ -6,7 +6,7 @@ const UserRatingSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'driveSchool'
   },
-  username: String,
+  userName: String,
   content: String,
   numRating: Number,
   cards: String,
