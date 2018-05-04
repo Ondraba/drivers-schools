@@ -3,6 +3,7 @@ import withData from "../lib/withData";
 import FullPageTemplate from "../universal/components/layout/fullPageTemplate";
 import ItemDetail from "../universal/components/detail/itemDetail";
 import CreateRating from "../universal/components/detail/createRating";
+import RatingList from "../universal/components/detail/ratingList";
 
 import { graphql } from "react-apollo";
 import { DriveSchool } from "../queries/services/fetches";
@@ -12,6 +13,7 @@ const Detail = props => {
     <FullPageTemplate>
       <ItemDetail {...props} />
       <CreateRating driveSchoolId = { props._data.driveSchool._id } />
+      <RatingList userRatings = { props._data.driveSchool.userRatings }/>
     </FullPageTemplate>
   );
 };

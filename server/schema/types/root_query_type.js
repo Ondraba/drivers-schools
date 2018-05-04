@@ -26,11 +26,18 @@ const RootQueryType = new GraphQLObjectType({
         return DriveSchool.findOne({ nextUrl: nextUrl });
       }
     },
+    userRatings: {
+      type: DriveSchoolType,
+      args: { id: { type: new GraphQLNonNull(GraphQLID) } },
+      resolve(parentValue, { id }) {
+        return DriveSchool.findById(id);
+      }
+    },
     userRating: {
       type: UserRatingType,
       args: { id: { type: new GraphQLNonNull(GraphQLID) } },
       resolve(parentValue, { id }) {
-        return UserRatingType.findById(id);
+        return UserRating.findById(id);
       }
     },
   })

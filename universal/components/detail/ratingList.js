@@ -1,19 +1,17 @@
 import React from "react";
 import { graphql } from "react-apollo";
 
-import ListItem from "./listItem";
+import RatingItem from "./ratingItem";
 
 import { branch, compose, renderComponent } from 'recompose';
 import { RenderWhileLoading } from "../helpers/renderWhileLoading";
 import { RenderWhileError } from "../helpers/renderWhileError";
 
-const ItemList = props => {
-  const { driveSchools } = props._data;
-
+const RatingList = ({userRatings}) => {
   return (
     <div style={styles}>
-      {driveSchools.map(driveSchool => (
-        <ListItem key={driveSchool.id} {...driveSchool} />
+      {userRatings.map(userRating => (
+        <RatingItem key={userRating.id} {...userRating} />
       ))}
     </div>
   );
@@ -26,5 +24,5 @@ const styles = {
 export default compose(
   RenderWhileLoading("_data"),
   RenderWhileError("_data")
-)(ItemList);
+)(RatingList);
 

@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import Error from "./Error";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
-import fetchDriveSchools from "../../../queries/fetchDriveSchools";
+import UserRatings from "../../../queries/userRatings";
 
 class CreateRating extends Component {
   constructor(props) {
@@ -23,11 +23,12 @@ class CreateRating extends Component {
             numRating,
             cards
         },
-        refetchQueries: [{ query: fetchDriveSchools }]
+         query: UserRatings, options: (props) => {
+          return {
+              variables: { id: driveSchoolId }
+          }
+        } 
       })
-      .then(() => {
-        Router.push("/index");
-      });
   }
 
   render() {
