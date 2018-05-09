@@ -4,7 +4,13 @@ import { Formik } from "formik";
 import Error from "./Error";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
-import UserRatings from "../../../queries/userRatings";
+import DriveSchool from "../../../queries/driveSchool";
+import DriveSchools from "../../../queries/fetchDriveSchools";
+
+
+
+import Row from "react-bootstrap/lib/Row";
+import Col from "react-bootstrap/lib/Col";
 
 class CreateRating extends Component {
   constructor(props) {
@@ -12,7 +18,7 @@ class CreateRating extends Component {
     this.submit = this.submit.bind(this);
   }
 
-  submit({ driveSchoolId = this.props.driveSchoolId, userName, content, numRating, cards }) {
+  submit({ driveSchoolId = this.props.driveSchoolId, userName, content, numRating, cards, nextUrl = this.props.nextUrl }) {
     event.preventDefault();
     this.props
       .mutate({
@@ -23,16 +29,29 @@ class CreateRating extends Component {
             numRating,
             cards
         },
-         query: UserRatings, options: (props) => {
-          return {
-              variables: { id: driveSchoolId }
-          }
-        } 
+        update: (store, { data: { addUserRating } }) => {
+          console.log(store)
+          const data = store.readQuery({
+            query: DriveSchool,
+            variables: {
+              nextUrl
+            }
+          })
+          data.userRatings.push(addUserRating)
+          store.writeQuery({
+            query: DriveSchool,
+            variables: {
+              nextUrl
+            },
+            data
+          })
+        }
       })
-  }
+    }
 
   render() {
     return (
+      <Col xs={12}>
       <Formik
         initialValues={{
           userName: "",
@@ -81,7 +100,7 @@ class CreateRating extends Component {
           isSubmitting,
           handleReset
         }) => (
-          <form onSubmit={handleSubmit}>\
+          <form onSubmit={handleSubmit}  style={styles.formik}>
           <div>
               <input
                 type="content"
@@ -89,16 +108,18 @@ class CreateRating extends Component {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.userName}
+                style={styles.input.small}
               />
               {touched.userName && errors.userName && <Error value={errors.userName} />}
             </div>
             <div>
-              <input
+              <textarea
                 type="content"
                 name="content"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.content}
+                style={styles.input.large}
               />
               {touched.content && errors.content && <Error value={errors.content} />}
             </div>
@@ -109,44 +130,66 @@ class CreateRating extends Component {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.numRating}
+                style={styles.input.small}
               />
               {touched.numRating && errors.numRating && <Error value={errors.numRating} />}
             </div>
             <div>
-              <textarea
+              <input
                 type="content"
                 name="cards"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.cards}
+                style={styles.input.small}
               />
               {touched.cards &&
               errors.cards && <Error value={errors.cards} />}
             </div>
     
-            <button type="submit" disabled={isSubmitting}>
-              Submit
+            <button type="submit" disabled={isSubmitting} style={styles.button}>
+              Okomentovat
             </button>
           </form>
         )}
       />
+      </Col>
     );
+  }
+}
+const styles = {
+  formik : {
+    marginLeft: "-5px"
+  },
+  input: {
+    large: {
+      marginTop: "10px",
+      width: "70%",
+      minHeight: "200px"
+    },
+    small: {
+      marginTop: "10px",
+      width: "30%"
+    }
+  },
+  button: {
+    marginTop: "20px"
   }
 }
 
 const mutation = gql`
     mutation AddUserRating($driveSchoolId: ID, $userName: String, $content: String, $numRating: Int, $cards: String){
       addUserRating(driveSchoolId: $driveSchoolId, userName: $userName,content: $content, numRating: $numRating, cards: $cards){
-            _id
-            userRatings{
-                _id
-                userName
-                content
-                numRating
-                cards
+              _id
+              userRatings{
+                  _id
+                  userName
+                  content
+                  numRating
+                  cards
+              }
             }
         }
-    }
 `;
 
 export default graphql(mutation)(CreateRating);

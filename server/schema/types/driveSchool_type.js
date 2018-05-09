@@ -24,6 +24,7 @@ const DriveSchoolType = new GraphQLObjectType({
     createdAt: { type: GrapQLDateTime },
     sumRating:{ type: GraphQLInt },
     likes: { type: GraphQLInt },
+    ratingCount: { type: GraphQLInt },
     userRatings: {
       type: new GraphQLList(UserRatingType),
       resolve(parentValue) {

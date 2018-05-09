@@ -11,6 +11,7 @@ query DriveSchool($nextUrl: String!){
       cars
       createdAt
       likes
+      ratingCount
     }
   }
 `;

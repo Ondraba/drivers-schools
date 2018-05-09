@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 
 export default ({ userName, content, numRating, cards}) => (
-  <Col sm={3} style={styles.col}>
+  <Col xs={12} style={styles.col}>
       <Row className="show-grid" style={styles.row}>
         <Col xs={12} md={12}>
           {userName}

@@ -11,9 +11,9 @@ import { RenderWhileLoading } from "../helpers/renderWhileLoading";
 import { RenderWhileError } from "../helpers/renderWhileError";
 
 const ItemDetail = props => {
-  const { driveSchool : { nextUrl, title, content, perex, web, cars }} = props._data;
+  const { driveSchool : { nextUrl, title, content, perex, web, cars, ratingCount }} = props._data;
   return (
-    <Col sm={3} style={styles.col}>
+    <Col xs={12} style={styles.col}>
       <Row className="show-grid" style={styles.row}>
         <Col xs={12} md={12}>
           <Link href={`detail?nextUrl=${nextUrl}`}>
@@ -39,6 +39,11 @@ const ItemDetail = props => {
       <Row className="show-grid" style={styles.row}>
         <Col xs={12} md={12}>
           {cars}
+        </Col>
+      </Row>
+      <Row className="show-grid" style={styles.row}>
+        <Col xs={12} md={12}>
+          {ratingCount}
         </Col>
       </Row>
     </Col>

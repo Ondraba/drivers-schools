@@ -5,18 +5,36 @@ import ItemDetail from "../universal/components/detail/itemDetail";
 import CreateRating from "../universal/components/detail/createRating";
 import RatingList from "../universal/components/detail/ratingList";
 
+import Row from "react-bootstrap/lib/Row";
+import Col from "react-bootstrap/lib/Col";
+
 import { graphql } from "react-apollo";
 import { DriveSchool } from "../queries/services/fetches";
 
 const Detail = props => {
   return (
     <FullPageTemplate>
-      <ItemDetail {...props} />
-      <CreateRating driveSchoolId = { props._data.driveSchool._id } />
-      <RatingList userRatings = { props._data.driveSchool.userRatings }/>
+      <Col xs={12} >
+       <Row className="show-grid" >
+        <Col xs={12} md={12}>
+          <ItemDetail {...props} />
+        </Col>
+      </Row>
+      <Row className="show-grid" >
+        <Col xs={12} md={12}>
+         <CreateRating driveSchoolId = { props._data.driveSchool._id } nextUrl = { props.nextUrl } />
+        </Col>
+      </Row>
+      <Row className="show-grid" >
+        <Col xs={12} md={12}>
+         <RatingList userRatings = { props._data.driveSchool.userRatings }/>
+        </Col>
+      </Row>
+      </Col>
     </FullPageTemplate>
   );
 };
+
 
 
 Detail.getInitialProps = async({ query }) => {

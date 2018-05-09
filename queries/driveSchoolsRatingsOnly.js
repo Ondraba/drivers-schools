@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 export default gql`
-query UserRatings($id: ID!){
-   userRatings(id: $id){
+query DriveSchoolsRatingsOnly($id: ID!){
+  driveSchoolsRatingsOnly(id: $id){
      _id
     userRatings{
         _id
