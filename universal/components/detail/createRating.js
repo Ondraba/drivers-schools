@@ -4,13 +4,13 @@ import { Formik } from "formik";
 import Error from "./Error";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
-import DriveSchool from "../../../queries/driveSchool";
 import DriveSchools from "../../../queries/fetchDriveSchools";
-
 
 
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
+
+import { DriveSchool } from "../../../queries/services/fetches";
 
 class CreateRating extends Component {
   constructor(props) {
@@ -28,25 +28,7 @@ class CreateRating extends Component {
             content, 
             numRating,
             cards
-        },
-        update: (store, { data: { addUserRating } }) => {
-          console.log(store)
-          const data = store.readQuery({
-            query: DriveSchool,
-            variables: {
-              nextUrl
-            }
-          })
-          data.userRatings.push(addUserRating)
-          store.writeQuery({
-            query: DriveSchool,
-            variables: {
-              nextUrl
-            },
-            data
-          })
-        }
-      })
+        }})
     }
 
   render() {

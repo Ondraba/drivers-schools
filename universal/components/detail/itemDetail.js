@@ -10,8 +10,11 @@ import { compose } from 'recompose';
 import { RenderWhileLoading } from "../helpers/renderWhileLoading";
 import { RenderWhileError } from "../helpers/renderWhileError";
 
+import DriveSchool from "../../../queries/driveSchool";
+
+
 const ItemDetail = props => {
-  const { driveSchool : { nextUrl, title, content, perex, web, cars, ratingCount }} = props._data;
+  const { driveSchool : { nextUrl, title, content, perex, web, cars, ratingCount }} = props.data;
   return (
     <Col xs={12} style={styles.col}>
       <Row className="show-grid" style={styles.row}>
@@ -68,10 +71,18 @@ const styles = {
   }
 };
 
+const data = graphql(DriveSchool,{
+  options: (props) => {
+      return {
+          variables: {nextUrl: props.nextUrl}
+      }
+  }
+})
 
 export default compose(
-  RenderWhileLoading("_data"),
-  RenderWhileError("_data")
+  data,
+  RenderWhileLoading("data"),
+  RenderWhileError("data")
 )(ItemDetail);
 
 

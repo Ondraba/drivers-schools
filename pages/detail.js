@@ -17,17 +17,17 @@ const Detail = props => {
       <Col xs={12} >
        <Row className="show-grid" >
         <Col xs={12} md={12}>
-          <ItemDetail {...props} />
+          <ItemDetail nextUrl = { props.nextUrl } />
         </Col>
       </Row>
       <Row className="show-grid" >
         <Col xs={12} md={12}>
-         <CreateRating driveSchoolId = { props._data.driveSchool._id } nextUrl = { props.nextUrl } />
+         {/* <CreateRating driveSchoolId = { props._data.driveSchool._id } nextUrl = { props.nextUrl } /> */}
         </Col>
       </Row>
       <Row className="show-grid" >
         <Col xs={12} md={12}>
-         <RatingList userRatings = { props._data.driveSchool.userRatings }/>
+         <RatingList nextUrl = { props.nextUrl } />
         </Col>
       </Row>
       </Col>
@@ -39,8 +39,7 @@ const Detail = props => {
 
 Detail.getInitialProps = async({ query }) => {
   const { nextUrl } = query;
-  const data = await DriveSchool(nextUrl);
-  return { nextUrl : query.nextUrl, _data: data }
+  return { nextUrl : query.nextUrl }
 }
 
 export default withData(Detail);

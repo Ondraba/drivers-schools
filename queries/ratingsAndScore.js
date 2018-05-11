@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 export default gql`
-query DriveSchoolsRatingsOnly($id: ID!){
-  driveSchoolsRatingsOnly(id: $id){
+query RatingAndScore($nextUrl: String!){
+  ratingsAndScore(nextUrl: $nextUrl){
      _id
     userRatings{
         _id

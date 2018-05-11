@@ -26,15 +26,15 @@ const RootQueryType = new GraphQLObjectType({
         return DriveSchool.findOne({ nextUrl: nextUrl });
       }
     },
-    driveSchoolsRatingsOnly: {
+    ratingsAndScore: {
       type: DriveSchoolType,
-      args: { 
-        id: {
-           type: new GraphQLNonNull(GraphQLID) 
-       } 
-    },
-      resolve(parentValue, { id }) {
-        return DriveSchool.findById(id);
+      args: {
+        nextUrl: {
+          type: new GraphQLNonNull(GraphQLString)
+        }
+      },
+      resolve(parentValue, { nextUrl }) {
+        return DriveSchool.findOne({ nextUrl: nextUrl });
       }
     },
     userRating: {

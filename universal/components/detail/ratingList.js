@@ -7,7 +7,10 @@ import { branch, compose, renderComponent } from 'recompose';
 import { RenderWhileLoading } from "../helpers/renderWhileLoading";
 import { RenderWhileError } from "../helpers/renderWhileError";
 
-const RatingList = ({userRatings}) => {
+import RatingsAndScore from "../../../queries/ratingsAndScore";
+
+const RatingList = props => {
+  const { ratingsAndScore : { userRatings }} = props.data;
   return (
     <div style={styles}>
       {userRatings.map(userRating => (
@@ -21,8 +24,18 @@ const styles = {
   marginTop: "40px"
 }
 
+const data = graphql(RatingsAndScore,{
+  options: (props) => {
+      return {
+          variables: {nextUrl: props.nextUrl}
+      }
+  }
+})
+
 export default compose(
-  RenderWhileLoading("_data"),
-  RenderWhileError("_data")
+  data,
+  RenderWhileLoading("data"),
+  RenderWhileError("data")
 )(RatingList);
+
 
